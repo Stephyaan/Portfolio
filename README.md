@@ -1,5 +1,5 @@
 Stephy Ann Biju — Portfolio
-Live Portfolio → stephyannbiju.vercel.app
+Live Portfolio → https://stephyannbiju.vercel.app/
 
 👩‍💻 About
 Personal portfolio website of Stephy Ann Biju, a B.Tech Computer Science Engineer at Amal Jyothi College of Engineering, specializing in DevOps, Cloud Computing, and AI.
