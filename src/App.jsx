@@ -227,14 +227,11 @@ function App() {
                   {/* Experience 1: Nest Digital */}
                   <div className="relative pl-14 group">
                     <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
-                      <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
                     </div>
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
                       <h3 className="text-xl font-display font-semibold text-white">DevOps & Cloud Intern</h3>
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Feb 2026 - Present</span>
-                        <span className="px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold tracking-wider rounded uppercase">Now</span>
-                      </div>
+                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">February 2026</span>
                     </div>
                     <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">Nest Digital</h4>
                     <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
