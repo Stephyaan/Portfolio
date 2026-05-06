@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud } from 'lucide-react';
+import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud, Github } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -20,21 +20,50 @@ const projectsData = [
     title: "Hostel Maintenance & Utility Management",
     desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
     tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite"],
+    repo: "https://github.com/Stephyaan/HostelHub-Hostel-Maintenance-and-Utility-WebApp",
+    live: "https://hostel-hub-hostel-maintenance-and-u.vercel.app"
   },
   {
-    title: "CloudBlog",
+    title: "CloudBlog (MiniBlog)",
     desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
     tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
+    repo: "https://github.com/Stephyaan/MiniBlog-Website-AWS-Deployed",
+    live: null
   },
   {
     title: "Smart Pill Box",
     desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
     tech: ["Healthcare", "Hardware/Software", "Design"],
+    repo: null,
+    live: null
   },
   {
-    title: "College Website",
+    title: "College Website / Web Dev 101",
     desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
     tech: ["HTML", "CSS", "Docker"],
+    repo: "https://github.com/Stephyaan/wd101",
+    live: null
+  },
+  {
+    title: "Agricultural Yield Prediction",
+    desc: "Data analysis and prediction models for agricultural yield using R programming.",
+    tech: ["R", "Data Analysis", "Machine Learning"],
+    repo: "https://github.com/Stephyaan/Agricultural_Yield_Prediction_R",
+    live: null
+  },
+  {
+    title: "DSA Practice Repository",
+    desc: "A structured repository of Data Structures and Algorithms practice and solutions, categorized by difficulty levels.",
+    tech: ["Data Structures", "Algorithms", "Problem Solving"],
+    repo: "https://github.com/Stephyaan/dsa-practise",
+    live: null
+  },
+  {
+    title: "Personal Portfolio",
+    desc: "A modern, highly interactive portfolio website featuring 3D animations, custom Framer Motion physics, and glassmorphism UI.",
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    repo: "https://github.com/Stephyaan/Portfolio",
+    live: "https://stephyannbiju.vercel.app"
   }
 ];
 
@@ -383,13 +412,17 @@ function App() {
                       ))}
                     </div>
                     
-                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10">
-                      <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
-                        <Code size={16} /> Code
-                      </a>
-                      <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
-                        View Live <ExternalLink size={16} />
-                      </a>
+                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10 min-h-[64px]">
+                      {project.repo && (
+                        <a href={project.repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
+                          <Github size={16} /> Source Code
+                        </a>
+                      )}
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
+                          View Live <ExternalLink size={16} />
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 );
