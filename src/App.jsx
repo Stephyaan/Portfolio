@@ -363,7 +363,7 @@ function App() {
                       zIndex: isActive ? 10 : 5,
                       filter: isActive ? 'blur(0px)' : 'blur(4px)'
                     }}
-                    transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     onClick={() => {
                       if (!isActive) setActiveProject(i);
                     }}
