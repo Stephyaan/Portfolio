@@ -44,6 +44,15 @@ function App() {
 
   const nextProject = () => setActiveProject((prev) => (prev + 1) % projectsData.length);
   const prevProject = () => setActiveProject((prev) => (prev - 1 + projectsData.length) % projectsData.length);
+
+  // Autoplay functionality for projects slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveProject((prev) => (prev + 1) % projectsData.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [activeProject]);
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
