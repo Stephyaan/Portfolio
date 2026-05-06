@@ -194,101 +194,149 @@ function App() {
           </div>
         </section>
 
-        {/* Selected Works - Kept minimalist */}
-        <section id="projects" className="py-24 px-6 md:px-8">
-          <div className="max-w-6xl mx-auto">
+        {/* Experience Timeline - Official Record Style */}
+        <section id="experience" className="py-32 px-6 md:px-8 bg-[#0a0a0a]">
+          <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-medium text-white mb-12 font-display tracking-tight">
-                Selected Projects
-              </h2>
+              <div className="flex items-center gap-4 mb-16 justify-center">
+                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;experience/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
+                  Official Record
+                </h2>
+              </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    title: "Smart Pill Box",
-                    desc: "Hardware/software integration to assist patients with timely medication.",
-                    tech: ["IoT", "C++", "Sensors"],
-                  },
-                  {
-                    title: "RAG AI Chatbot",
-                    desc: "Conversational AI agent built using Retrieval-Augmented Generation.",
-                    tech: ["Python", "LLMs", "LangChain"],
-                  },
-                  {
-                    title: "Data Viz Dashboard",
-                    desc: "Interactive BI dashboard for tracking core metrics and deriving insights.",
-                    tech: ["Power BI", "Python", "SQL"],
-                  }
-                ].map((project, i) => (
-                  <motion.div key={i} whileHover={{ y: -5 }} className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 flex flex-col hover:border-white/30 transition-colors group">
-                    <h3 className="text-lg font-medium font-display text-white mb-3">{project.title}</h3>
-                    <p className="text-gray-400 text-sm mb-6 font-light flex-grow">
-                      {project.desc}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((t, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-white/5 text-gray-400 text-xs rounded-md">
-                          {t}
-                        </span>
-                      ))}
+              <div className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                {/* Decorative top border like a receipt */}
+                <div className="absolute top-0 left-0 right-0 h-2 flex justify-between px-2 overflow-hidden opacity-20">
+                  {Array.from({ length: 40 }).map((_, i) => (
+                    <div key={i} className="w-2 h-2 rounded-full bg-white -mt-1"></div>
+                  ))}
+                </div>
+
+                <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[1.125rem] before:-translate-x-px before:h-full before:w-px before:bg-white/10 mt-4">
+                  
+                  {/* Experience 1: Nest Digital */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                     </div>
-                    <div className="flex items-center gap-4 mt-auto">
-                      <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg>
-                      </a>
-                      <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                        <ExternalLink size={18} />
-                      </a>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-semibold text-white">DevOps & Cloud Intern</h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Feb 2026 - Present</span>
+                        <span className="px-2 py-0.5 bg-green-500/10 text-green-400 text-[10px] font-bold tracking-wider rounded uppercase">Now</span>
+                      </div>
                     </div>
-                  </motion.div>
-                ))}
+                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">Nest Digital</h4>
+                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
+                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Deployed full-stack and static web applications using AWS and GitHub Pages.</p>
+                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Applied Git workflows (branching, commits, push/pull) for efficient version control.</p>
+                      <p><span className="text-gray-600 mr-2">›</span>Utilized Docker for containerization and gained hands-on experience in cloud deployment practices.</p>
+                    </div>
+                  </div>
+
+                  {/* Experience 2: IPSR */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-semibold text-white">AI & Data Analytics Intern</h3>
+                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">July 2025 (1 Month)</span>
+                    </div>
+                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">IPSR Solutions Ltd</h4>
+                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
+                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Worked on Generative AI concepts, Machine Learning models, and RAG-based chatbot development.</p>
+                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Applied Python and Power BI for data analysis and visualization tasks.</p>
+                      <p><span className="text-gray-600 mr-2">›</span>Gained practical exposure to real-world AI workflows and model integration.</p>
+                    </div>
+                  </div>
+
+                  {/* Experience 3: Cognifyz */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-semibold text-white">UI/UX Design Intern</h3>
+                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">April 2025 (2 Months)</span>
+                    </div>
+                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">Cognifyz Technologies</h4>
+                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
+                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Designed user interfaces with a focus on usability and user experience enhancement.</p>
+                      <p><span className="text-gray-600 mr-2">›</span>Created wireframes and improved design flow based on user-centric principles.</p>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Experience Timeline */}
-        <section id="experience" className="py-24 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5">
-          <div className="max-w-4xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-medium text-white mb-16 font-display tracking-tight text-center">
-                Experience
-              </h2>
-              
-              <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-white/10">
-                
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0f0f0f] bg-white text-black shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <Server size={16} />
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <div className="text-gray-500 text-xs font-medium mb-2 uppercase tracking-wider">Feb 2026 - Present</div>
-                    <h3 className="text-lg font-display font-medium text-white mb-1">DevOps & Cloud Intern</h3>
-                    <div className="text-gray-400 text-sm mb-4">Nest Technologies</div>
-                    <ul className="text-gray-500 text-sm space-y-2 list-none font-light">
-                      <li className="flex items-start gap-2"><span className="text-white shrink-0 mt-0.5">•</span> Mastering CI/CD pipelines</li>
-                      <li className="flex items-start gap-2"><span className="text-white shrink-0 mt-0.5">•</span> AWS & cloud-native workflows</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0f0f0f] bg-[#1f1f1f] text-gray-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <Database size={16} />
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <div className="text-gray-500 text-xs font-medium mb-2 uppercase tracking-wider">July 2025</div>
-                    <h3 className="text-lg font-display font-medium text-white mb-1">AI & Data Analytics Intern</h3>
-                    <div className="text-gray-400 text-sm mb-4">IPSR Solutions Ltd</div>
-                    <ul className="text-gray-500 text-sm space-y-2 list-none font-light">
-                      <li className="flex items-start gap-2"><span className="text-gray-500 shrink-0 mt-0.5">•</span> Built RAG-based chatbot</li>
-                      <li className="flex items-start gap-2"><span className="text-gray-500 shrink-0 mt-0.5">•</span> Data viz using Power BI</li>
-                    </ul>
-                  </div>
-                </div>
-
+        {/* Projects Carousel */}
+        <section id="projects" className="py-32 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-16 text-center">
+              <div className="flex items-center gap-4 justify-center mb-6">
+                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;projects/&gt;</span>
               </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-display tracking-tight">
+                Featured Work
+              </h2>
             </motion.div>
+            
+            {/* Horizontal Scroll Container */}
+            <div className="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {[
+                {
+                  title: "Hostel Maintenance System",
+                  desc: "Dockerised HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Hosted on AWS EC2.",
+                  tech: ["HTML/CSS/JS", "Django", "SQLite", "Docker", "AWS"],
+                },
+                {
+                  title: "CloudBlog",
+                  desc: "Cloud-hosted responsive blogging system. Containerized using Docker and deployed on AWS infrastructure with robust search functionality.",
+                  tech: ["HTML/CSS/JS", "AWS", "Docker", "Git"],
+                },
+                {
+                  title: "Smart Pill Box",
+                  desc: "I2U 2025 Funded Project. Contributed to the design of an automated healthcare solution for medication adherence. Approved for Phase II funding.",
+                  tech: ["IoT", "Sensors", "Hardware/Software"],
+                },
+                {
+                  title: "College Website",
+                  desc: "Docker Practice. Built and containerized a static website using Docker, gaining hands-on experience in application packaging.",
+                  tech: ["HTML", "CSS", "Docker"],
+                }
+              ].map((project, i) => (
+                <motion.div key={i} whileHover={{ y: -5 }} className="min-w-[85vw] md:min-w-[500px] snap-center shrink-0 bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 flex flex-col hover:border-white/30 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full group-hover:bg-white/10 transition-colors"></div>
+                  
+                  <h3 className="text-2xl font-semibold font-display text-white mb-4 relative z-10">{project.title}</h3>
+                  <p className="text-gray-400 text-base mb-8 font-light flex-grow leading-relaxed relative z-10">
+                    {project.desc}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+                    {project.tech.map((t, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10">
+                    <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg> Code
+                    </a>
+                    <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto">
+                      View Live <ExternalLink size={16} />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
