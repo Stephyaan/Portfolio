@@ -102,45 +102,92 @@ function App() {
           </div>
         </section>
 
-        {/* About & Skills Grid */}
-        <section id="about" className="py-24 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5">
-          <div className="max-w-6xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}>
-              <h2 className="text-2xl md:text-3xl font-medium text-white mb-12 font-display tracking-tight">
-                About & Expertise
-              </h2>
+        {/* About, Education & Skills */}
+        <section id="about" className="py-24 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5 relative overflow-hidden">
+          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2"></div>
+          
+          <div className="max-w-6xl mx-auto relative z-10">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+              <div className="flex items-center gap-4 mb-12">
+                <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono tracking-widest uppercase rounded-full border border-white/20">&lt;about/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
+                  Who I Am
+                </h2>
+              </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* About Box */}
-                <div className="lg:col-span-2 bg-[#141414] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors">
-                  <h3 className="text-xl font-display font-medium text-white mb-4">Background</h3>
-                  <div className="text-gray-400 space-y-4 font-light leading-relaxed">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* About Text */}
+                <div className="lg:col-span-2 space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-display text-white leading-tight">
+                    Motivated Computer Science Engineering student passionate about <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500 italic font-serif">meaningful</span> digital solutions.
+                  </h3>
+                  <div className="text-gray-400 space-y-4 font-light leading-relaxed text-lg">
                     <p>
-                      I am a B.Tech student at Amal Jyothi College of Engineering with a CGPA of 8.65.
+                      With a strong foundation in programming, data analysis, and software development, I am driven by a fascination for how intelligent applications are built, deployed, and scaled. 
                     </p>
                     <p>
-                      My journey started with a fascination for how applications are deployed and scaled. Since then, I've dived deep into DevOps, AWS, and Generative AI to build intelligent and robust systems.
+                      I bring hands-on experience through internships and funded projects in Artificial Intelligence, UI/UX design, and web development. I am passionate about continuously enhancing my technical and problem-solving skills to contribute effectively to real-world software projects.
                     </p>
                   </div>
                 </div>
 
-                {/* Tech Cards */}
-                <div className="bg-[#141414] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors group">
-                  <Cloud size={28} className="text-gray-300 mb-6 group-hover:text-white transition-colors" />
-                  <h4 className="text-lg font-display font-medium text-white mb-2">Cloud & DevOps</h4>
-                  <p className="text-gray-500 text-sm">AWS, Docker, CI/CD, Kubernetes</p>
+                {/* Quick Info Cards */}
+                <div className="flex flex-col gap-4">
+                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Education</p>
+                    <h4 className="text-white font-medium">B.Tech in Computer Science</h4>
+                    <p className="text-sm text-gray-400 mt-1">Amal Jyothi College of Engineering</p>
+                    <p className="text-xs text-gray-500 mt-2 font-mono">2023 - 2027 | CGPA: 8.63</p>
+                  </div>
+                  
+                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Based In</p>
+                    <h4 className="text-white font-medium">Kottayam, Kerala, India</h4>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Skills & Tools Section */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp} className="mt-24">
+              <div className="flex items-center gap-4 mb-12">
+                <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono tracking-widest uppercase rounded-full border border-white/20">&lt;skills/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
+                  Tech Stack & Tools
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Languages */}
+                <div className="p-8 bg-[#141414] border border-white/5 rounded-2xl">
+                  <h3 className="text-xl font-display text-white mb-6 flex items-center gap-3"><Code size={20} className="text-gray-400"/> Programming & Frontend</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['Python', 'C', 'JavaScript', 'HTML5', 'CSS3', 'React (Basic)', 'Responsive Design'].map(skill => (
+                      <span key={skill} className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 text-sm rounded-md hover:bg-white/10 transition-colors cursor-default">{skill}</span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="bg-[#141414] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors group">
-                  <Code size={28} className="text-gray-300 mb-6 group-hover:text-white transition-colors" />
-                  <h4 className="text-lg font-display font-medium text-white mb-2">Development</h4>
-                  <p className="text-gray-500 text-sm">Python, C, JavaScript, React</p>
+                {/* Cloud & Data */}
+                <div className="p-8 bg-[#141414] border border-white/5 rounded-2xl">
+                  <h3 className="text-xl font-display text-white mb-6 flex items-center gap-3"><Database size={20} className="text-gray-400"/> Cloud, Data & Tools</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['AWS', 'Docker', 'SQL', 'Power BI', 'Git/GitHub', 'Figma', 'VS Code'].map(skill => (
+                      <span key={skill} className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 text-sm rounded-md hover:bg-white/10 transition-colors cursor-default">{skill}</span>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="lg:col-span-2 bg-[#141414] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors group">
-                  <Database size={28} className="text-gray-300 mb-6 group-hover:text-white transition-colors" />
-                  <h4 className="text-lg font-display font-medium text-white mb-2">Data & AI</h4>
-                  <p className="text-gray-500 text-sm">SQL, Power BI, Large Language Models (LLMs), and Retrieval-Augmented Generation (RAG).</p>
+                
+                {/* Soft Skills */}
+                <div className="md:col-span-2 p-6 bg-gradient-to-r from-[#141414] to-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col md:flex-row items-center gap-6">
+                  <h3 className="text-lg font-display text-white whitespace-nowrap">Soft Skills:</h3>
+                  <div className="flex flex-wrap gap-3 text-sm text-gray-400">
+                    <span className="flex items-center gap-1"><Sparkles size={14}/> Communication</span>
+                    <span className="flex items-center gap-1"><Sparkles size={14}/> Problem-Solving</span>
+                    <span className="flex items-center gap-1"><Sparkles size={14}/> Team Collaboration</span>
+                    <span className="flex items-center gap-1"><Sparkles size={14}/> Adaptability</span>
+                    <span className="flex items-center gap-1"><Sparkles size={14}/> Time Management</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
