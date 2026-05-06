@@ -62,17 +62,21 @@ function App() {
                 Available for opportunities
               </motion.div>
               
-              <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-4 tracking-tighter leading-[1.1]">
-                Stephy Ann Biju
-              </motion.h1>
+              <motion.div variants={fadeInUp} className="relative mb-6">
+                <div className="absolute -inset-x-8 -inset-y-8 bg-white/5 blur-3xl rounded-full -z-10 hidden md:block"></div>
+                <h1 className="font-display text-6xl md:text-[6rem] lg:text-[8rem] font-extrabold text-white tracking-tighter leading-[0.9] uppercase">
+                  STEPHY ANN <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">BIJU</span>
+                </h1>
+              </motion.div>
               
-              <motion.h2 variants={fadeInUp} className="text-xl md:text-2xl text-gray-300 font-display mb-8 tracking-wide">
-                Computer Science Engineer
-              </motion.h2>
-              
-              <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed font-light mx-auto">
-                Detail-oriented engineering student with hands-on experience building practical, user-centric solutions in Artificial Intelligence, web development, and cloud computing.
-              </motion.p>
+              <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs md:text-sm text-gray-400 font-bold tracking-[0.2em] uppercase mb-12">
+                <span>Computer Science</span>
+                <span className="text-white/30 text-lg">★</span>
+                <span>Cloud & DevOps</span>
+                <span className="text-white/30 text-lg">★</span>
+                <span>AI & Data</span>
+              </motion.div>
               
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center">
                 <a href="#about" className="px-6 py-3 bg-white text-black hover:bg-gray-200 font-medium rounded-md transition-colors flex items-center gap-2 text-sm">
