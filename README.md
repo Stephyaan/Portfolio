@@ -38,7 +38,7 @@ git push
 ## 📬 Contact
 - 🌐 Portfolio: https://stephyannbiju.vercel.app/
 - 📧 Email: stephyannbiju29@gmail.com
-- 💼 LinkedIn: Stephy Ann Biju
+- 💼 LinkedIn: https://www.linkedin.com/in/stephyannbiju/
 - 🐙 GitHub: @Stephyaan
 - 📍 Location: Kanjirappally, Kerala, India
 
