@@ -3,13 +3,41 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg: #030712; /* gray-950 */
+    --fg: #f9fafb; /* gray-50 */
+  }
+
   body {
-    @apply bg-slate-950 text-slate-50 font-sans antialiased overflow-x-hidden;
+    @apply bg-[#030712] text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-primary-500/30 selection:text-primary-200;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-purple-400 to-primary-600;
   }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712; 
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151; 
 }
