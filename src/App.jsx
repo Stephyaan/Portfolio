@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, Sparkles, Cloud } from 'lucide-react';
+import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -15,9 +15,35 @@ const staggerContainer = {
   }
 };
 
+const projectsData = [
+  {
+    title: "Hostel Maintenance & Utility Management",
+    desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
+    tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite"],
+  },
+  {
+    title: "CloudBlog",
+    desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
+    tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
+  },
+  {
+    title: "Smart Pill Box",
+    desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
+    tech: ["Healthcare", "Hardware/Software", "Design"],
+  },
+  {
+    title: "College Website",
+    desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
+    tech: ["HTML", "CSS", "Docker"],
+  }
+];
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeProject, setActiveProject] = useState(0);
 
+  const nextProject = () => setActiveProject((prev) => (prev + 1) % projectsData.length);
+  const prevProject = () => setActiveProject((prev) => (prev - 1 + projectsData.length) % projectsData.length);
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
@@ -280,7 +306,7 @@ function App() {
           </div>
         </section>
 
-        {/* Projects Carousel */}
+        {/* Advanced 3D Projects Slider */}
         <section id="projects" className="py-32 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5 overflow-hidden">
           <div className="max-w-7xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-16 text-center">
@@ -292,56 +318,90 @@ function App() {
               </h2>
             </motion.div>
             
-            {/* Horizontal Scroll Container */}
-            <div className="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              {[
-                {
-                  title: "Hostel Maintenance & Utility Management",
-                  desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
-                  tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite"],
-                },
-                {
-                  title: "CloudBlog",
-                  desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
-                  tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
-                },
-                {
-                  title: "Smart Pill Box",
-                  desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
-                  tech: ["Healthcare", "Hardware/Software", "Design"],
-                },
-                {
-                  title: "College Website",
-                  desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
-                  tech: ["HTML", "CSS", "Docker"],
-                }
-              ].map((project, i) => (
-                <motion.div key={i} whileHover={{ y: -5 }} className="min-w-[85vw] md:min-w-[500px] snap-center shrink-0 bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 flex flex-col hover:border-white/30 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full group-hover:bg-white/10 transition-colors"></div>
-                  
-                  <h3 className="text-2xl font-semibold font-display text-white mb-4 relative z-10">{project.title}</h3>
-                  <p className="text-gray-400 text-base mb-8 font-light flex-grow leading-relaxed relative z-10">
-                    {project.desc}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-8 relative z-10">
-                    {project.tech.map((t, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10">
-                    <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg> Code
-                    </a>
-                    <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto">
-                      View Live <ExternalLink size={16} />
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
+            {/* 3D Slider Container */}
+            <div className="relative h-[550px] md:h-[450px] w-full max-w-5xl mx-auto flex items-center justify-center" style={{ perspective: '1000px' }}>
+              {projectsData.map((project, i) => {
+                const offset = (i - activeProject + projectsData.length) % projectsData.length;
+                let standardOffset = 0;
+                if (offset === 0) standardOffset = 0;
+                else if (offset === 1) standardOffset = 1;
+                else if (offset === projectsData.length - 1) standardOffset = -1;
+                else standardOffset = 2;
+
+                const isActive = standardOffset === 0;
+                const isHidden = Math.abs(standardOffset) > 1;
+
+                return (
+                  <motion.div
+                    key={i}
+                    className="absolute w-full max-w-lg md:max-w-xl bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 flex flex-col overflow-hidden group cursor-pointer"
+                    initial={false}
+                    animate={{
+                      scale: isActive ? 1 : 0.85,
+                      x: `${standardOffset * 70}%`,
+                      z: isActive ? 0 : -100,
+                      opacity: isHidden ? 0 : (isActive ? 1 : 0.4),
+                      zIndex: isActive ? 10 : 5,
+                      filter: isActive ? 'blur(0px)' : 'blur(4px)'
+                    }}
+                    transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+                    onClick={() => setActiveProject(i)}
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full transition-colors pointer-events-none"></div>
+                    
+                    <h3 className="text-2xl md:text-3xl font-semibold font-display text-white mb-4 relative z-10">{project.title}</h3>
+                    <p className="text-gray-400 text-sm md:text-base mb-8 font-light flex-grow leading-relaxed relative z-10">
+                      {project.desc}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+                      {project.tech.map((t, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10">
+                      <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
+                        <Code size={16} /> Code
+                      </a>
+                      <a href="#" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
+                        View Live <ExternalLink size={16} />
+                      </a>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Slider Controls */}
+            <div className="flex items-center justify-center gap-6 mt-12 relative z-20">
+              <button 
+                onClick={prevProject}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:scale-110 transition-all focus:outline-none"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              
+              {/* Dots */}
+              <div className="flex gap-2">
+                {projectsData.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveProject(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeProject === i ? 'bg-white w-6' : 'bg-white/20 hover:bg-white/40'}`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button 
+                onClick={nextProject}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:scale-110 transition-all focus:outline-none"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
         </section>
