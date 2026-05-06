@@ -62,14 +62,16 @@ function App() {
                 Available for opportunities
               </motion.div>
               
-              <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 mb-6 tracking-tighter leading-[1.1]">
-                Engineer. <br />
-                Developer. <br />
-                Cloud Enthusiast.
+              <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-4 tracking-tighter leading-[1.1]">
+                Stephy Ann Biju
               </motion.h1>
               
+              <motion.h2 variants={fadeInUp} className="text-xl md:text-2xl text-gray-300 font-display mb-8 tracking-wide">
+                Computer Science Engineer
+              </motion.h2>
+              
               <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed font-light mx-auto">
-                I bridge the gap between software development and scalable cloud architectures. Specializing in DevOps, Cloud Computing, and AI.
+                Detail-oriented engineering student with hands-on experience building practical, user-centric solutions in Artificial Intelligence, web development, and cloud computing.
               </motion.p>
               
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center">
