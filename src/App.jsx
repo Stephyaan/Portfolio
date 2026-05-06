@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, Sparkles } from 'lucide-react';
+import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, Sparkles, Cloud } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
