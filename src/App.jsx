@@ -178,15 +178,15 @@ function App() {
                   </div>
                 </div>
                 
-                {/* Soft Skills */}
+                {/* Professional Traits */}
                 <div className="md:col-span-2 p-6 bg-gradient-to-r from-[#141414] to-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col md:flex-row items-center gap-6">
-                  <h3 className="text-lg font-display text-white whitespace-nowrap">Soft Skills:</h3>
-                  <div className="flex flex-wrap gap-3 text-sm text-gray-400">
-                    <span className="flex items-center gap-1"><Sparkles size={14}/> Communication</span>
-                    <span className="flex items-center gap-1"><Sparkles size={14}/> Problem-Solving</span>
-                    <span className="flex items-center gap-1"><Sparkles size={14}/> Team Collaboration</span>
-                    <span className="flex items-center gap-1"><Sparkles size={14}/> Adaptability</span>
-                    <span className="flex items-center gap-1"><Sparkles size={14}/> Time Management</span>
+                  <h3 className="text-lg font-display text-white whitespace-nowrap">Professional Traits:</h3>
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-300">
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-green-400"/> Continuous Learner</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-blue-400"/> Proactive Problem Solver</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-yellow-400"/> Agile & Adaptable</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-purple-400"/> Cross-functional Collaboration</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-pink-400"/> Enthusiastic Work Ethic</span>
                   </div>
                 </div>
               </div>
