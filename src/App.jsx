@@ -319,7 +319,17 @@ function App() {
             </motion.div>
             
             {/* 3D Slider Container */}
-            <div className="relative h-[550px] md:h-[450px] w-full max-w-5xl mx-auto flex items-center justify-center" style={{ perspective: '1000px' }}>
+            <motion.div 
+              className="relative h-[550px] md:h-[450px] w-full max-w-5xl mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y" 
+              style={{ perspective: '1000px' }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.1}
+              onDragEnd={(e, { offset }) => {
+                if (offset.x < -50) nextProject();
+                else if (offset.x > 50) prevProject();
+              }}
+            >
               {projectsData.map((project, i) => {
                 const offset = (i - activeProject + projectsData.length) % projectsData.length;
                 let standardOffset = 0;
@@ -334,7 +344,7 @@ function App() {
                 return (
                   <motion.div
                     key={i}
-                    className="absolute w-full max-w-lg md:max-w-xl bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 flex flex-col overflow-hidden group cursor-pointer"
+                    className={`absolute w-full max-w-lg md:max-w-xl bg-[#0a0a0a] rounded-3xl p-8 flex flex-col overflow-hidden group transition-all duration-300 ${isActive ? 'border-2 border-white/20 hover:border-white/80 hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] cursor-default' : 'border border-white/10 cursor-pointer'}`}
                     initial={false}
                     animate={{
                       scale: isActive ? 1 : 0.85,
@@ -345,7 +355,9 @@ function App() {
                       filter: isActive ? 'blur(0px)' : 'blur(4px)'
                     }}
                     transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
-                    onClick={() => setActiveProject(i)}
+                    onClick={() => {
+                      if (!isActive) setActiveProject(i);
+                    }}
                   >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full transition-colors pointer-events-none"></div>
                     
@@ -373,36 +385,7 @@ function App() {
                   </motion.div>
                 );
               })}
-            </div>
-
-            {/* Slider Controls */}
-            <div className="flex items-center justify-center gap-6 mt-12 relative z-20">
-              <button 
-                onClick={prevProject}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:scale-110 transition-all focus:outline-none"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              
-              {/* Dots */}
-              <div className="flex gap-2">
-                {projectsData.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveProject(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeProject === i ? 'bg-white w-6' : 'bg-white/20 hover:bg-white/40'}`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button 
-                onClick={nextProject}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:scale-110 transition-all focus:outline-none"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
+            </motion.div>
           </div>
         </section>
 
