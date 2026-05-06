@@ -123,10 +123,10 @@ function App() {
                   </h3>
                   <div className="text-gray-400 space-y-4 font-light leading-relaxed text-lg">
                     <p>
-                      With a strong foundation in programming, data analysis, and software development, I am driven by a fascination for how intelligent applications are built, deployed, and scaled. 
+                      Motivated and detail oriented Computer Science Engineering student with a strong foundation in programming, data analysis and software development. 
                     </p>
                     <p>
-                      I bring hands-on experience through internships and funded projects in Artificial Intelligence, UI/UX design, and web development. I am passionate about continuously enhancing my technical and problem-solving skills to contribute effectively to real-world software projects.
+                      Hands-on experience through internships and funded projects in Artificial Intelligence, UI/UX design and web development. Passionate about building practical, user-centric solutions and continuously enhancing technical and problem-solving skills to contribute effectively in real-world software projects.
                     </p>
                   </div>
                 </div>
@@ -134,15 +134,24 @@ function App() {
                 {/* Quick Info Cards */}
                 <div className="flex flex-col gap-4">
                   <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Education</p>
-                    <h4 className="text-white font-medium">B.Tech in Computer Science</h4>
-                    <p className="text-sm text-gray-400 mt-1">Amal Jyothi College of Engineering</p>
-                    <p className="text-xs text-gray-500 mt-2 font-mono">2023 - 2027 | CGPA: 8.63</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">B.Tech</p>
+                    <h4 className="text-white font-medium text-sm">Computer Science Engineering</h4>
+                    <p className="text-xs text-gray-400 mt-1">Amal Jyothi College of Engineering</p>
+                    <p className="text-[10px] text-gray-500 mt-2 font-mono">2023 - 2027 | CGPA: 8.63</p>
                   </div>
                   
                   <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Based In</p>
-                    <h4 className="text-white font-medium">Kottayam, Kerala, India</h4>
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Higher Secondary</p>
+                    <h4 className="text-white font-medium text-sm">Science</h4>
+                    <p className="text-xs text-gray-400 mt-1">St. Antony's Public School</p>
+                    <p className="text-[10px] text-gray-500 mt-2 font-mono">CBSE | 2023 | 89%</p>
+                  </div>
+                  
+                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Secondary Education</p>
+                    <h4 className="text-white font-medium text-sm">CBSE</h4>
+                    <p className="text-xs text-gray-400 mt-1">St. Antony's Public School</p>
+                    <p className="text-[10px] text-gray-500 mt-2 font-mono">2021 | 95%</p>
                   </div>
                 </div>
               </div>
@@ -290,23 +299,23 @@ function App() {
             <div className="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {[
                 {
-                  title: "Hostel Maintenance System",
-                  desc: "Dockerised HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Hosted on AWS EC2.",
-                  tech: ["HTML/CSS/JS", "Django", "SQLite", "Docker", "AWS"],
+                  title: "Hostel Maintenance & Utility Management",
+                  desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
+                  tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite"],
                 },
                 {
                   title: "CloudBlog",
-                  desc: "Cloud-hosted responsive blogging system. Containerized using Docker and deployed on AWS infrastructure with robust search functionality.",
-                  tech: ["HTML/CSS/JS", "AWS", "Docker", "Git"],
+                  desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
+                  tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
                 },
                 {
                   title: "Smart Pill Box",
-                  desc: "I2U 2025 Funded Project. Contributed to the design of an automated healthcare solution for medication adherence. Approved for Phase II funding.",
-                  tech: ["IoT", "Sensors", "Hardware/Software"],
+                  desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
+                  tech: ["Healthcare", "Hardware/Software", "Design"],
                 },
                 {
                   title: "College Website",
-                  desc: "Docker Practice. Built and containerized a static website using Docker, gaining hands-on experience in application packaging.",
+                  desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
                   tech: ["HTML", "CSS", "Docker"],
                 }
               ].map((project, i) => (
@@ -337,6 +346,81 @@ function App() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Certifications & Achievements */}
+        <section id="certifications" className="py-24 px-6 md:px-8 bg-[#0a0a0a]">
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+              <div className="flex items-center gap-4 mb-16 justify-center">
+                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;achievements/&gt;</span>
+                <h2 className="text-2xl md:text-4xl font-bold text-white font-display tracking-tight text-center">
+                  Certifications & Achievements
+                </h2>
+              </div>
+              
+              <div className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 md:p-12">
+                <ul className="space-y-6 text-gray-400 font-light text-sm md:text-base">
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">NPTEL Online Certification</strong>
+                      Database Management System (IIT Kharagpur)
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">Oracle Java Foundation Learner's Certification</strong>
+                      Oracle Academy
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">Web Developer Bootcamp 2025</strong>
+                      Udemy
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">Complete Front-End Development Journey</strong>
+                      (HTML5, CSS3, JavaScript) - Infosys Springboard
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">AI Fundamentals</strong>
+                      IBM
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">Google Cloud GenAI Certifications</strong>
+                      (Vertex AI, LLMs, MLOps, Responsible AI, Transformers)
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">Introduction to Agile Development and Scrum</strong>
+                      IBM
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
+                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
+                    <div>
+                      <strong className="text-white block mb-0.5">DevOps on AWS and Project Management</strong>
+                      AWS
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </section>
 
