@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud, Info, X, Layers, ArrowRight } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -13,7 +13,6 @@ const staggerContainer = {
     opacity: 1,
     transition: { staggerChildren: 0.1 }
   }
-  }
 };
 
 
@@ -22,13 +21,39 @@ const projectsData = [
   {
     title: "Hostel Maintenance & Utility Management",
     desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
-    tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite"],
+    fullDescription: "HostelHub is a comprehensive full-stack solution designed to digitize and streamline the maintenance operations within university hostels. Recognizing the inefficiencies of paper-based complaint logs, I architected a role-based platform that allows students to easily log issues, wardens to assign tasks to specific workers, and workers to update task statuses in real-time.",
+    features: [
+      "Role-Based Access Control (RBAC) for Students, Wardens, and Maintenance Workers.",
+      "Real-time status tracking pipeline (Pending -> Assigned -> In Progress -> Resolved).",
+      "Interactive Admin Analytics Dashboard to monitor resolution times and pending workload.",
+      "Fully containerized environment using Docker for seamless deployment."
+    ],
+    concepts: [
+      "Full-Stack Web Architecture (Django backend + Vanilla JS frontend)",
+      "Containerization & Orchestration (Docker)",
+      "Cloud Deployment & Infrastructure (AWS EC2)",
+      "Relational Database Design (SQLite / PostgreSQL)"
+    ],
+    tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite", "Docker", "AWS"],
     repo: "https://github.com/Stephyaan/HostelHub-Hostel-Maintenance-and-Utility-WebApp",
     live: "https://hostel-hub-hostel-maintenance-and-u.vercel.app"
   },
   {
     title: "CloudBlog (MiniBlog)",
     desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
+    fullDescription: "CloudBlog is an elegant, responsive platform for authors to publish and manage their articles. It features a robust backend architecture paired with an intuitive front-end, entirely deployed to the cloud. This project was a deep dive into mastering cloud deployments and setting up automated CI/CD pipelines.",
+    features: [
+      "Dynamic blog creation, editing, and deletion using a rich text editor.",
+      "Advanced search and filtering system for finding specific content rapidly.",
+      "Responsive UI designed for both mobile readers and desktop authors.",
+      "Deployed to an AWS cloud instance ensuring high availability."
+    ],
+    concepts: [
+      "Cloud Infrastructure Management (AWS)",
+      "Version Control Best Practices (Git)",
+      "Containerized Application Delivery (Docker)",
+      "RESTful API Design & Consumption"
+    ],
     tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
     repo: "https://github.com/Stephyaan/MiniBlog-Website-AWS-Deployed",
     live: null
@@ -36,34 +61,99 @@ const projectsData = [
   {
     title: "Smart Pill Box",
     desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
-    tech: ["Healthcare", "Hardware/Software", "Design"],
+    fullDescription: "An innovative IoT hardware-software hybrid solution addressing the critical issue of medication adherence in elderly patients. The Smart Pill Box automatically dispenses the correct medication at precisely scheduled times, sending alerts to both the patient and their caretakers if a dose is missed. This project received Phase II funding for its high societal impact potential.",
+    features: [
+      "Automated dispensing mechanism synchronized with a central scheduling app.",
+      "Real-time caretaker notifications and logging system.",
+      "Fail-safe alerts for missed doses using visual and auditory cues.",
+      "Secure, privacy-first healthcare data handling."
+    ],
+    concepts: [
+      "Hardware-Software Integration (IoT)",
+      "Healthcare UX/UI Design Principles",
+      "Real-time Alert Systems",
+      "Pitching & Grant Acquisition (I2U 2025 Funded)"
+    ],
+    tech: ["Healthcare", "Hardware/Software", "Design", "IoT"],
     repo: null,
     live: null
   },
   {
     title: "College Website / Web Dev 101",
     desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
-    tech: ["HTML", "CSS", "Docker"],
+    fullDescription: "A modern, accessible redesign of a conceptual college portal. This project served as a foundational exercise in advanced CSS layouts, semantic HTML5, and most importantly, an introduction to DevOps practices by packaging a static site into a lightweight Docker container for instant deployment anywhere.",
+    features: [
+      "Semantic, accessible HTML structure for screen readers.",
+      "Modern CSS Grid and Flexbox layouts.",
+      "Packaged as a lightweight Nginx Docker image.",
+      "Optimized assets for near-instant load times."
+    ],
+    concepts: [
+      "DevOps Basics (Dockerizing static sites)",
+      "Web Accessibility (a11y)",
+      "Responsive Design",
+      "Web Performance Optimization"
+    ],
+    tech: ["HTML", "CSS", "Docker", "Nginx"],
     repo: "https://github.com/Stephyaan/wd101",
     live: null
   },
   {
     title: "Agricultural Yield Prediction",
     desc: "Data analysis and prediction models for agricultural yield using R programming.",
-    tech: ["R", "Data Analysis", "Machine Learning"],
+    fullDescription: "A data science initiative to empower farmers with predictive insights regarding crop yields based on historical data, weather patterns, and soil metrics. By leveraging statistical modeling in R, the project aims to reduce uncertainty and optimize resource allocation in agriculture.",
+    features: [
+      "Extensive Data Cleaning and Exploratory Data Analysis (EDA).",
+      "Implementation of multiple regression models to forecast yields.",
+      "Interactive data visualizations to present findings to non-technical stakeholders.",
+      "Model evaluation using RMSE and R-squared metrics."
+    ],
+    concepts: [
+      "Statistical Modeling & Machine Learning",
+      "Exploratory Data Analysis (EDA)",
+      "Data Visualization (ggplot2)",
+      "Predictive Analytics"
+    ],
+    tech: ["R", "Data Analysis", "Machine Learning", "ggplot2"],
     repo: "https://github.com/Stephyaan/Agricultural_Yield_Prediction_R",
     live: null
   },
   {
     title: "DSA Practice Repository",
     desc: "A structured repository of Data Structures and Algorithms practice and solutions, categorized by difficulty levels.",
-    tech: ["Data Structures", "Algorithms", "Problem Solving"],
+    fullDescription: "My personal compendium of algorithmic problem-solving. This repository serves as an ongoing log of my journey through complex Data Structures and Algorithms. It is strictly organized by topic and difficulty, containing heavily commented code to explain the logic and time/space complexity of each solution.",
+    features: [
+      "Solutions categorized by difficulty (Easy, Medium, Hard).",
+      "Implementations of core Data Structures (Trees, Graphs, Hash Maps).",
+      "Detailed comments explaining algorithmic approaches and complexities.",
+      "Continuous integration of new problems and optimized solutions."
+    ],
+    concepts: [
+      "Algorithmic Thinking & Optimization",
+      "Big O Notation (Time & Space Complexity)",
+      "Advanced Data Structures",
+      "Test-Driven Problem Solving"
+    ],
+    tech: ["Data Structures", "Algorithms", "Problem Solving", "C++", "Java"],
     repo: "https://github.com/Stephyaan/dsa-practise",
     live: null
   },
   {
     title: "Personal Portfolio",
     desc: "A modern, highly interactive portfolio website featuring 3D animations, custom Framer Motion physics, and glassmorphism UI.",
+    fullDescription: "The website you are currently viewing! Designed to be more than just a resume, this portfolio is a testament to my capabilities in modern frontend engineering. It focuses heavily on technical artistry, utilizing advanced state management and physics-based animations to create a premium, native-app feel within a web browser.",
+    features: [
+      "Custom 3D 'Cover Flow' project slider using Framer Motion.",
+      "Sleek, monochrome design system emphasizing typography and spacing.",
+      "Complex state management for full-screen overlays and interactive timelines.",
+      "Fully responsive architecture adapting perfectly to mobile and desktop."
+    ],
+    concepts: [
+      "Advanced Animation Physics (Framer Motion)",
+      "Component-Driven Architecture (React)",
+      "Utility-First Styling (Tailwind CSS)",
+      "UI/UX Technical Artistry"
+    ],
     tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
     repo: "https://github.com/Stephyaan/Portfolio",
     live: "https://stephyannbiju.vercel.app"
@@ -73,6 +163,7 @@ const projectsData = [
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeProject, setActiveProject] = useState(0);
+  const [selectedProjectDetails, setSelectedProjectDetails] = useState(null);
 
   const nextProject = () => setActiveProject((prev) => (prev + 1) % projectsData.length);
   const prevProject = () => setActiveProject((prev) => (prev - 1 + projectsData.length) % projectsData.length);
@@ -416,16 +507,15 @@ function App() {
                     </div>
                     
                     <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10 min-h-[64px]">
-                      {project.repo && (
-                        <a href={project.repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
-                          <Code size={16} /> Code
-                        </a>
-                      )}
-                      {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
-                          View Live <ExternalLink size={16} />
-                        </a>
-                      )}
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProjectDetails(i);
+                        }}
+                        className="flex items-center gap-2 text-sm text-white font-medium hover:text-gray-300 transition-colors bg-white/10 px-4 py-2 rounded-full"
+                      >
+                        <Info size={16} /> View Case Study
+                      </button>
                     </div>
                   </motion.div>
                 );
@@ -536,6 +626,106 @@ function App() {
           </div>
         </footer>
       </main>
+
+      {/* Project Details Modal */}
+      <AnimatePresence>
+        {selectedProjectDetails !== null && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-xl"
+            onClick={() => setSelectedProjectDetails(null)}
+          >
+            <motion.div 
+              initial={{ y: 50, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.95 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-[#0f0f0f] border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/5">
+                <h2 className="text-2xl md:text-4xl font-bold text-white font-display tracking-tight">
+                  {projectsData[selectedProjectDetails].title}
+                </h2>
+                <button 
+                  onClick={() => setSelectedProjectDetails(null)}
+                  className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-gray-400 hover:text-white transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Content - Scrollable */}
+              <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+                <div className="space-y-8">
+                  {/* Overview */}
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Info className="text-gray-500" size={20} /> Overview</h3>
+                    <p className="text-gray-300 leading-relaxed text-lg font-light">
+                      {projectsData[selectedProjectDetails].fullDescription || projectsData[selectedProjectDetails].desc}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  {projectsData[selectedProjectDetails].features && (
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Layers className="text-gray-500" size={20} /> Key Features</h3>
+                      <ul className="space-y-3">
+                        {projectsData[selectedProjectDetails].features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-gray-300">
+                            <span className="text-gray-600 mt-1">›</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Concepts Learned */}
+                  {projectsData[selectedProjectDetails].concepts && (
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Sparkles className="text-gray-500" size={20} /> Concepts & Learnings</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {projectsData[selectedProjectDetails].concepts.map((concept, idx) => (
+                          <div key={idx} className="p-4 bg-white/5 rounded-xl border border-white/5 text-gray-300 text-sm">
+                            {concept}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Footer Actions */}
+              <div className="p-6 md:p-8 border-t border-white/5 bg-[#0a0a0a] flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex flex-wrap gap-2">
+                  {projectsData[selectedProjectDetails].tech.map((t, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 ml-auto">
+                  {projectsData[selectedProjectDetails].repo && (
+                    <a href={projectsData[selectedProjectDetails].repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-colors text-sm font-medium border border-white/10">
+                      <Code size={16} /> Repository
+                    </a>
+                  )}
+                  {projectsData[selectedProjectDetails].live && (
+                    <a href={projectsData[selectedProjectDetails].live} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-white text-black hover:bg-gray-200 rounded-full transition-colors text-sm font-medium">
+                      View Live <ExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
