@@ -514,7 +514,7 @@ function App() {
                         }}
                         className="flex items-center gap-2 text-sm text-white font-medium hover:text-gray-300 transition-colors bg-white/10 px-4 py-2 rounded-full"
                       >
-                        <Info size={16} /> View Case Study
+                        View More <ArrowRight size={16} />
                       </button>
                     </div>
                   </motion.div>
