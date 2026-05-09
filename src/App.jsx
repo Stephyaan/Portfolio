@@ -516,6 +516,12 @@ function App() {
                       >
                         View More <ArrowRight size={16} />
                       </button>
+                      
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
+                          View Live <ExternalLink size={16} />
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 );
