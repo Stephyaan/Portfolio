@@ -226,12 +226,6 @@ function App() {
                 <span>AI & Data</span>
               </motion.div>
               
-              <motion.div variants={fadeInUp}>
-                <p className="text-lg md:text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-                  Motivated Computer Science Engineering student passionate about building meaningful digital solutions through code, data, and design.
-                </p>
-              </motion.div>
-              
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center mt-4">
                 <a href="#projects" className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:-translate-y-1 font-bold rounded-full transition-all shadow-md">
                   Learn More
