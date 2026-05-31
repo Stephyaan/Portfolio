@@ -207,10 +207,23 @@ function App() {
           <div className="max-w-4xl mx-auto w-full relative z-10">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
               
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium mb-8 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                Available for opportunities
+              </motion.div>
+              
               <motion.div variants={fadeInUp}>
-                <h1 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">
+                <h1 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-4">
                   Stephy Ann Biju
                 </h1>
+              </motion.div>
+              
+              <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs md:text-sm text-white/80 font-bold tracking-[0.2em] uppercase mb-8">
+                <span>Computer Science</span>
+                <span className="text-white/40 text-lg">★</span>
+                <span>Cloud & DevOps</span>
+                <span className="text-white/40 text-lg">★</span>
+                <span>AI & Data</span>
               </motion.div>
               
               <motion.div variants={fadeInUp}>
@@ -221,10 +234,22 @@ function App() {
               
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center mt-4">
                 <a href="#projects" className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:-translate-y-1 font-bold rounded-full transition-all shadow-md">
-                  View Projects
+                  Learn More
                 </a>
-                <a href="#" className="px-8 py-3 bg-transparent border-2 border-white/80 hover:bg-white/10 hover:border-white text-white font-bold rounded-full transition-all flex items-center gap-2">
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-transparent border-2 border-white/80 hover:bg-white/10 hover:border-white text-white font-bold rounded-full transition-all flex items-center gap-2">
                   <Download size={18} /> Resume
+                </a>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="flex justify-center gap-5 mt-10">
+                <a href="https://github.com/Stephyaan" target="_blank" rel="noopener noreferrer" className="p-3 border border-white/20 rounded-full text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all hover:-translate-y-1">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/stephyannbiju/" target="_blank" rel="noopener noreferrer" className="p-3 border border-white/20 rounded-full text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all hover:-translate-y-1">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="mailto:stephyannbiju29@gmail.com" className="p-3 border border-white/20 rounded-full text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all hover:-translate-y-1">
+                  <Mail size={20} />
                 </a>
               </motion.div>
             </motion.div>
