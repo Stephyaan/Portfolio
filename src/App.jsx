@@ -79,7 +79,7 @@ const projectsData = [
       "Pitching & Grant Acquisition (I2U 2025 Funded)"
     ],
     tech: ["Healthcare", "Hardware/Software", "Design", "IoT"],
-    repo: null,
+    repo: "https://github.com/Stephyaan",
     live: null
   },
   {
