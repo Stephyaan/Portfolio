@@ -127,28 +127,6 @@ const projectsData = [
     live: null
   },
   {
-    title: "DSA Practice Repository",
-    category: "Algorithms",
-    image: "https://placehold.co/800x600/333333/FFF?text=DSA+Practice",
-    desc: "A structured repository of Data Structures and Algorithms practice and solutions, categorized by difficulty levels.",
-    fullDescription: "My personal compendium of algorithmic problem-solving. This repository serves as an ongoing log of my journey through complex Data Structures and Algorithms. It is strictly organized by topic and difficulty, containing heavily commented code to explain the logic and time/space complexity of each solution.",
-    features: [
-      "Solutions categorized by difficulty (Easy, Medium, Hard).",
-      "Implementations of core Data Structures (Trees, Graphs, Hash Maps).",
-      "Detailed comments explaining algorithmic approaches and complexities.",
-      "Continuous integration of new problems and optimized solutions."
-    ],
-    concepts: [
-      "Algorithmic Thinking & Optimization",
-      "Big O Notation (Time & Space Complexity)",
-      "Advanced Data Structures",
-      "Test-Driven Problem Solving"
-    ],
-    tech: ["Data Structures", "Algorithms", "Problem Solving", "C++", "Java"],
-    repo: "https://github.com/Stephyaan/dsa-practise",
-    live: null
-  },
-  {
     title: "Personal Portfolio",
     category: "Frontend",
     image: "https://placehold.co/800x600/6C63FF/FFF?text=Portfolio",
