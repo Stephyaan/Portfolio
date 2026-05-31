@@ -36,7 +36,7 @@ const projectsData = [
     ],
     tech: ["HTML", "CSS", "JavaScript", "Django", "SQLite", "Docker", "AWS"],
     repo: "https://github.com/Stephyaan/HostelHub-Hostel-Maintenance-and-Utility-WebApp",
-    live: "https://hostel-hub-hostel-maintenance-and-u.vercel.app"
+    live: "https://hostel-management-ecosystem-stephyaans-projects.vercel.app/"
   },
   {
     title: "CloudBlog (MiniBlog)",
@@ -58,7 +58,7 @@ const projectsData = [
     ],
     tech: ["HTML", "CSS", "JavaScript", "AWS", "Docker", "Git"],
     repo: "https://github.com/Stephyaan/MiniBlog-Website-AWS-Deployed",
-    live: null
+    live: "https://mini-blog-website-indol.vercel.app/"
   },
   {
     title: "Smart Pill Box",
@@ -452,11 +452,6 @@ function App() {
                       </button>
                       
                       <div className="flex items-center gap-3">
-                        {project.repo && (
-                          <a href={project.repo} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors" title="GitHub Repository">
-                            <Code size={18} />
-                          </a>
-                        )}
                         {project.live && (
                           <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors" title="Live Preview">
                             <ExternalLink size={18} />
