@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, ExternalLink, Download, Code, Server, Database, ChevronRight, ChevronLeft, Sparkles, Cloud, Info, X, Layers, ArrowRight } from 'lucide-react';
 
 const fadeInUp = {
@@ -15,11 +15,11 @@ const staggerContainer = {
   }
 };
 
-
-
 const projectsData = [
   {
     title: "Hostel Maintenance & Utility Management",
+    category: "Full Stack",
+    image: "https://placehold.co/800x600/6C63FF/FFF?text=HostelHub",
     desc: "Built and developed a Dockerised, HostelHub, a full-stack web application for digital hostel maintenance management with role-based access. Dockerised the application and hosted it on AWS EC2, ensuring reliable cloud-based availability. Implemented real-time status tracking, worker assignment, and admin analytics dashboard.",
     fullDescription: "HostelHub is a comprehensive full-stack solution designed to digitize and streamline the maintenance operations within university hostels. Recognizing the inefficiencies of paper-based complaint logs, I architected a role-based platform that allows students to easily log issues, wardens to assign tasks to specific workers, and workers to update task statuses in real-time.",
     features: [
@@ -40,6 +40,8 @@ const projectsData = [
   },
   {
     title: "CloudBlog (MiniBlog)",
+    category: "Cloud",
+    image: "https://placehold.co/800x600/FF6584/FFF?text=CloudBlog",
     desc: "Designed and developed a responsive blogging web application. Deployed on AWS, containerized using Docker, and managed with Git. Implemented features like blog posting and search functionality.",
     fullDescription: "CloudBlog is an elegant, responsive platform for authors to publish and manage their articles. It features a robust backend architecture paired with an intuitive front-end, entirely deployed to the cloud. This project was a deep dive into mastering cloud deployments and setting up automated CI/CD pipelines.",
     features: [
@@ -60,6 +62,8 @@ const projectsData = [
   },
   {
     title: "Smart Pill Box",
+    category: "IoT/Hardware",
+    image: "https://placehold.co/800x600/43a047/FFF?text=Smart+Pill+Box",
     desc: "Contributed to the design of an automated healthcare solution for medication adherence, approved for Phase II funding. (I2U 2025 Funded Project)",
     fullDescription: "An innovative IoT hardware-software hybrid solution addressing the critical issue of medication adherence in elderly patients. The Smart Pill Box automatically dispenses the correct medication at precisely scheduled times, sending alerts to both the patient and their caretakers if a dose is missed. This project received Phase II funding for its high societal impact potential.",
     features: [
@@ -80,6 +84,8 @@ const projectsData = [
   },
   {
     title: "College Website / Web Dev 101",
+    category: "DevOps",
+    image: "https://placehold.co/800x600/00bcd4/FFF?text=Web+Dev+101",
     desc: "Built and containerized a static website using Docker, gaining hands-on experience in application packaging as a Docker Practice.",
     fullDescription: "A modern, accessible redesign of a conceptual college portal. This project served as a foundational exercise in advanced CSS layouts, semantic HTML5, and most importantly, an introduction to DevOps practices by packaging a static site into a lightweight Docker container for instant deployment anywhere.",
     features: [
@@ -100,6 +106,8 @@ const projectsData = [
   },
   {
     title: "Agricultural Yield Prediction",
+    category: "Data Science",
+    image: "https://placehold.co/800x600/f39c12/FFF?text=Yield+Prediction",
     desc: "Data analysis and prediction models for agricultural yield using R programming.",
     fullDescription: "A data science initiative to empower farmers with predictive insights regarding crop yields based on historical data, weather patterns, and soil metrics. By leveraging statistical modeling in R, the project aims to reduce uncertainty and optimize resource allocation in agriculture.",
     features: [
@@ -120,6 +128,8 @@ const projectsData = [
   },
   {
     title: "DSA Practice Repository",
+    category: "Algorithms",
+    image: "https://placehold.co/800x600/333333/FFF?text=DSA+Practice",
     desc: "A structured repository of Data Structures and Algorithms practice and solutions, categorized by difficulty levels.",
     fullDescription: "My personal compendium of algorithmic problem-solving. This repository serves as an ongoing log of my journey through complex Data Structures and Algorithms. It is strictly organized by topic and difficulty, containing heavily commented code to explain the logic and time/space complexity of each solution.",
     features: [
@@ -140,12 +150,13 @@ const projectsData = [
   },
   {
     title: "Personal Portfolio",
+    category: "Frontend",
+    image: "https://placehold.co/800x600/6C63FF/FFF?text=Portfolio",
     desc: "A modern, highly interactive portfolio website featuring 3D animations, custom Framer Motion physics, and glassmorphism UI.",
     fullDescription: "The website you are currently viewing! Designed to be more than just a resume, this portfolio is a testament to my capabilities in modern frontend engineering. It focuses heavily on technical artistry, utilizing advanced state management and physics-based animations to create a premium, native-app feel within a web browser.",
     features: [
-      "Custom 3D 'Cover Flow' project slider using Framer Motion.",
       "Sleek, monochrome design system emphasizing typography and spacing.",
-      "Complex state management for full-screen overlays and interactive timelines.",
+      "Complex state management for overlays and interactive features.",
       "Fully responsive architecture adapting perfectly to mobile and desktop."
     ],
     concepts: [
@@ -162,19 +173,7 @@ const projectsData = [
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeProject, setActiveProject] = useState(0);
   const [selectedProjectDetails, setSelectedProjectDetails] = useState(null);
-
-  const nextProject = () => setActiveProject((prev) => (prev + 1) % projectsData.length);
-  const prevProject = () => setActiveProject((prev) => (prev - 1 + projectsData.length) % projectsData.length);
-
-  // Autoplay functionality for projects slider
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveProject((prev) => (prev + 1) % projectsData.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [activeProject]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -183,464 +182,193 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20 selection:text-white">
-      {/* Navbar */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isScrolled ? 'bg-[#0a0a0a]/80 backdrop-blur-md border-white/10 py-4' : 'bg-transparent border-transparent py-6'}`}>
+    <div className="min-h-screen bg-background text-text font-sans selection:bg-primary/20 selection:text-primary-dark">
+      {/* Header */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 md:px-8 flex items-center justify-between">
-          <a href="#" className="font-display text-xl font-medium tracking-tight text-white z-10 hover:text-gray-300 transition-colors">
-            Stephy Ann Biju
+          <a href="#" className="font-display text-2xl font-bold tracking-tight text-text z-10 hover:opacity-80 transition-opacity">
+            StephyAnn<span className="text-primary">.</span>
           </a>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400 z-10">
-            {['About', 'Experience', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors">
+          <div className="hidden md:flex gap-8 text-[0.95rem] font-semibold text-text-muted z-10">
+            {['About', 'Experience', 'Projects'].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-primary hover:-translate-y-0.5 transition-all">
                 {item}
               </a>
             ))}
           </div>
-          {/* Mobile Menu Icon */}
-          <button className="md:hidden text-white z-10 p-2 opacity-70 hover:opacity-100 transition-opacity">
-            <div className="space-y-1.5">
-              <span className="block w-5 h-0.5 bg-current"></span>
-              <span className="block w-5 h-0.5 bg-current"></span>
-            </div>
-          </button>
         </div>
       </nav>
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 md:px-8 flex items-center justify-center min-h-[85vh]">
-          {/* Subtle top glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[300px] bg-white/5 blur-[100px] rounded-full pointer-events-none"></div>
+        <section className="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 md:px-8 bg-gradient-to-br from-primary to-secondary rounded-b-[40px] text-white text-center overflow-hidden mb-16">
+          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_60%)] pointer-events-none"></div>
           
-          <div className="max-w-4xl mx-auto w-full text-center relative z-10">
+          <div className="max-w-4xl mx-auto w-full relative z-10">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium mb-8">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                Available for opportunities
-              </motion.div>
               
-              <motion.div variants={fadeInUp} className="relative mb-6">
-                <div className="absolute -inset-x-8 -inset-y-8 bg-white/5 blur-3xl rounded-full -z-10 hidden md:block"></div>
-                <h1 className="font-display text-6xl md:text-[6rem] lg:text-[8rem] font-extrabold text-white tracking-tighter leading-[0.9] uppercase">
-                  STEPHY ANN <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">BIJU</span>
+              <motion.div variants={fadeInUp}>
+                <h1 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">
+                  Stephy Ann Biju
                 </h1>
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs md:text-sm text-gray-400 font-bold tracking-[0.2em] uppercase mb-12">
-                <span>Computer Science</span>
-                <span className="text-white/30 text-lg">★</span>
-                <span>Cloud & DevOps</span>
-                <span className="text-white/30 text-lg">★</span>
-                <span>AI & Data</span>
+              <motion.div variants={fadeInUp}>
+                <p className="text-lg md:text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+                  Motivated Computer Science Engineering student passionate about building meaningful digital solutions through code, data, and design.
+                </p>
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center">
-                <a href="#about" className="px-6 py-3 bg-white text-black hover:bg-gray-200 font-medium rounded-md transition-colors flex items-center gap-2 text-sm">
-                  Learn More
+              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center mt-4">
+                <a href="#projects" className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:-translate-y-1 font-bold rounded-full transition-all shadow-md">
+                  View Projects
                 </a>
-                <a href="#" className="px-6 py-3 bg-transparent border border-white/20 hover:bg-white/5 text-white font-medium rounded-md transition-colors flex items-center gap-2 text-sm">
-                  <Download size={16} /> Resume
-                </a>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="flex justify-center gap-5 mt-10">
-                <a href="https://github.com/Stephyaan" target="_blank" rel="noopener noreferrer" className="p-3 border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all hover:-translate-y-1">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/stephyannbiju/" target="_blank" rel="noopener noreferrer" className="p-3 border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all hover:-translate-y-1">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="mailto:stephyannbiju29@gmail.com" className="p-3 border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all hover:-translate-y-1">
-                  <Mail size={20} />
+                <a href="#" className="px-8 py-3 bg-transparent border-2 border-white/80 hover:bg-white/10 hover:border-white text-white font-bold rounded-full transition-all flex items-center gap-2">
+                  <Download size={18} /> Resume
                 </a>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* About, Education & Skills */}
-        <section id="about" className="py-24 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5 relative overflow-hidden">
-          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2"></div>
-          
-          <div className="max-w-6xl mx-auto relative z-10">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
-              <div className="flex items-center gap-4 mb-12">
-                <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono tracking-widest uppercase rounded-full border border-white/20">&lt;about/&gt;</span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
-                  Who I Am
-                </h2>
-              </div>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* About Text */}
-                <div className="lg:col-span-2 space-y-6">
-                  <h3 className="text-2xl md:text-3xl font-display text-white leading-tight">
-                    Motivated Computer Science Engineering student passionate about <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500 italic font-serif">meaningful</span> digital solutions.
-                  </h3>
-                  <div className="text-gray-400 space-y-4 font-light leading-relaxed text-lg">
-                    <p>
-                      Motivated and detail oriented Computer Science Engineering student with a strong foundation in programming, data analysis and software development. 
-                    </p>
-                    <p>
-                      Hands-on experience through internships and funded projects in Artificial Intelligence, UI/UX design and web development. Passionate about building practical, user-centric solutions and continuously enhancing technical and problem-solving skills to contribute effectively in real-world software projects.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Quick Info Cards */}
-                <div className="flex flex-col gap-4">
-                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">B.Tech</p>
-                    <h4 className="text-white font-medium text-sm">Computer Science Engineering</h4>
-                    <p className="text-xs text-gray-400 mt-1">Amal Jyothi College of Engineering</p>
-                    <p className="text-[10px] text-gray-500 mt-2 font-mono">2023 - 2027 | CGPA: 8.63</p>
-                  </div>
-                  
-                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Higher Secondary</p>
-                    <h4 className="text-white font-medium text-sm">Science</h4>
-                    <p className="text-xs text-gray-400 mt-1">St. Antony's Public School</p>
-                    <p className="text-[10px] text-gray-500 mt-2 font-mono">CBSE | 2023 | 89%</p>
-                  </div>
-                  
-                  <div className="p-6 bg-[#141414] border border-white/5 rounded-2xl hover:border-white/20 transition-colors">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Secondary Education</p>
-                    <h4 className="text-white font-medium text-sm">CBSE</h4>
-                    <p className="text-xs text-gray-400 mt-1">St. Antony's Public School</p>
-                    <p className="text-[10px] text-gray-500 mt-2 font-mono">2021 | 95%</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Skills & Tools Section */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp} className="mt-24">
-              <div className="flex items-center gap-4 mb-12">
-                <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono tracking-widest uppercase rounded-full border border-white/20">&lt;skills/&gt;</span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
-                  Tech Stack & Tools
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Languages */}
-                <div className="p-8 bg-[#141414] border border-white/5 rounded-2xl">
-                  <h3 className="text-xl font-display text-white mb-6 flex items-center gap-3"><Code size={20} className="text-gray-400"/> Programming & Frontend</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Python', 'C', 'JavaScript', 'HTML5', 'CSS3', 'React (Basic)', 'Responsive Design'].map(skill => (
-                      <span key={skill} className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 text-sm rounded-md hover:bg-white/10 transition-colors cursor-default">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Cloud & Data */}
-                <div className="p-8 bg-[#141414] border border-white/5 rounded-2xl">
-                  <h3 className="text-xl font-display text-white mb-6 flex items-center gap-3"><Database size={20} className="text-gray-400"/> Cloud, Data & Tools</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['AWS', 'Docker', 'SQL', 'Power BI', 'Git/GitHub', 'Figma', 'VS Code'].map(skill => (
-                      <span key={skill} className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 text-sm rounded-md hover:bg-white/10 transition-colors cursor-default">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Professional Traits */}
-                <div className="md:col-span-2 p-6 bg-gradient-to-r from-[#141414] to-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col md:flex-row items-center gap-6">
-                  <h3 className="text-lg font-display text-white whitespace-nowrap">Professional Traits:</h3>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-300">
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-green-400"/> Continuous Learner</span>
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-blue-400"/> Proactive Problem Solver</span>
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-yellow-400"/> Agile & Adaptable</span>
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-purple-400"/> Cross-functional Collaboration</span>
-                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/5"><Sparkles size={14} className="text-pink-400"/> Enthusiastic Work Ethic</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Experience Timeline - Official Record Style */}
-        <section id="experience" className="py-32 px-6 md:px-8 bg-[#0a0a0a]">
-          <div className="max-w-4xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-              <div className="flex items-center gap-4 mb-16 justify-center">
-                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;experience/&gt;</span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white font-display tracking-tight">
-                  Official Record
-                </h2>
-              </div>
-              
-              <div className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-                {/* Decorative top border like a receipt */}
-                <div className="absolute top-0 left-0 right-0 h-2 flex justify-between px-2 overflow-hidden opacity-20">
-                  {Array.from({ length: 40 }).map((_, i) => (
-                    <div key={i} className="w-2 h-2 rounded-full bg-white -mt-1"></div>
-                  ))}
-                </div>
-
-                <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[1.125rem] before:-translate-x-px before:h-full before:w-px before:bg-white/10 mt-4">
-                  
-                  {/* Experience 1: Nest Digital */}
-                  <div className="relative pl-14 group">
-                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
-                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
-                    </div>
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                      <h3 className="text-xl font-display font-semibold text-white">DevOps & Cloud Intern</h3>
-                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">February 2026</span>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">Nest Digital</h4>
-                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
-                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Deployed full-stack and static web applications using AWS and GitHub Pages.</p>
-                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Applied Git workflows (branching, commits, push/pull) for efficient version control.</p>
-                      <p><span className="text-gray-600 mr-2">›</span>Utilized Docker for containerization and gained hands-on experience in cloud deployment practices.</p>
-                    </div>
-                  </div>
-
-                  {/* Experience 2: IPSR */}
-                  <div className="relative pl-14 group">
-                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
-                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
-                    </div>
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                      <h3 className="text-xl font-display font-semibold text-white">AI & Data Analytics Intern</h3>
-                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">July 2025 (1 Month)</span>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">IPSR Solutions Ltd</h4>
-                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
-                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Worked on Generative AI concepts, Machine Learning models, and RAG-based chatbot development.</p>
-                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Applied Python and Power BI for data analysis and visualization tasks.</p>
-                      <p><span className="text-gray-600 mr-2">›</span>Gained practical exposure to real-world AI workflows and model integration.</p>
-                    </div>
-                  </div>
-
-                  {/* Experience 3: Cognifyz */}
-                  <div className="relative pl-14 group">
-                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-[#0a0a0a] rounded-full border-2 border-white/20 group-hover:border-white/50 transition-colors">
-                      <div className="w-3 h-3 rounded-full bg-white/30 group-hover:bg-white/80 transition-colors"></div>
-                    </div>
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                      <h3 className="text-xl font-display font-semibold text-white">UI/UX Design Intern</h3>
-                      <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">April 2025 (2 Months)</span>
-                    </div>
-                    <h4 className="text-sm font-medium text-gray-400 mb-4 tracking-wide uppercase">Cognifyz Technologies</h4>
-                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-gray-400 leading-relaxed group-hover:bg-white/[0.04] transition-colors">
-                      <p className="mb-2"><span className="text-gray-600 mr-2">›</span>Designed user interfaces with a focus on usability and user experience enhancement.</p>
-                      <p><span className="text-gray-600 mr-2">›</span>Created wireframes and improved design flow based on user-centric principles.</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Advanced 3D Projects Slider */}
-        <section id="projects" className="py-32 px-6 md:px-8 bg-[#0f0f0f] border-y border-white/5 overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-16 text-center">
-              <div className="flex items-center gap-4 justify-center mb-6">
-                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;projects/&gt;</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-display tracking-tight">
-                Featured Work
-              </h2>
-            </motion.div>
+        {/* Experience Section */}
+        <section id="experience" className="py-20 px-6 md:px-8 max-w-6xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-text font-display">Experience</h2>
+              <p className="text-text-muted mt-4">My professional journey and academic background</p>
+            </div>
             
-            {/* 3D Slider Container */}
-            <motion.div 
-              className="relative h-[550px] md:h-[450px] w-full max-w-5xl mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y" 
-              style={{ perspective: '1000px' }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={(e, { offset }) => {
-                if (offset.x < -50) nextProject();
-                else if (offset.x > 50) prevProject();
-              }}
-            >
-              {projectsData.map((project, i) => {
-                const offset = (i - activeProject + projectsData.length) % projectsData.length;
-                let standardOffset = 0;
-                if (offset === 0) standardOffset = 0;
-                else if (offset === 1) standardOffset = 1;
-                else if (offset === projectsData.length - 1) standardOffset = -1;
-                else standardOffset = 2;
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Experience 1 */}
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-text">DevOps & Cloud Intern</h3>
+                  <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Feb 2026</span>
+                </div>
+                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">Nest Digital</h4>
+                <ul className="space-y-2 text-sm text-text-muted">
+                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Deployed full-stack and static web applications using AWS and GitHub Pages.</li>
+                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Applied Git workflows for efficient version control.</li>
+                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Utilized Docker for containerization and gained hands-on cloud deployment experience.</li>
+                </ul>
+              </div>
 
-                const isActive = standardOffset === 0;
-                const isHidden = Math.abs(standardOffset) > 1;
+              {/* Experience 2 */}
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-text">AI & Data Analytics Intern</h3>
+                  <span className="text-xs font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">Jul 2025</span>
+                </div>
+                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">IPSR Solutions Ltd</h4>
+                <ul className="space-y-2 text-sm text-text-muted">
+                  <li className="flex items-start gap-2"><span className="text-secondary mt-1">›</span> Worked on Generative AI concepts, Machine Learning models, and RAG-based chatbots.</li>
+                  <li className="flex items-start gap-2"><span className="text-secondary mt-1">›</span> Applied Python and Power BI for data analysis and visualization tasks.</li>
+                </ul>
+              </div>
 
-                return (
-                  <motion.div
-                    key={i}
-                    className={`absolute w-full max-w-lg md:max-w-xl bg-[#0a0a0a] rounded-3xl p-8 flex flex-col overflow-hidden group transition-all duration-300 ${isActive ? 'border-2 border-white/20 hover:border-white/80 hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] cursor-default' : 'border border-white/10 cursor-pointer'}`}
-                    initial={false}
-                    animate={{
-                      scale: isActive ? 1 : 0.85,
-                      x: `${standardOffset * 70}%`,
-                      z: isActive ? 0 : -100,
-                      opacity: isHidden ? 0 : (isActive ? 1 : 0.4),
-                      zIndex: isActive ? 10 : 5,
-                      filter: isActive ? 'blur(0px)' : 'blur(4px)'
-                    }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    onClick={() => {
-                      if (!isActive) setActiveProject(i);
-                    }}
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full transition-colors pointer-events-none"></div>
+              {/* Experience 3 */}
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-text">UI/UX Design Intern</h3>
+                  <span className="text-xs font-bold text-accent bg-accent/20 px-3 py-1 rounded-full text-yellow-800">Apr 2025</span>
+                </div>
+                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">Cognifyz Technologies</h4>
+                <ul className="space-y-2 text-sm text-text-muted">
+                  <li className="flex items-start gap-2"><span className="text-accent mt-1">›</span> Designed user interfaces with a focus on usability and user experience enhancement.</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-1">›</span> Created wireframes and improved design flow based on user-centric principles.</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Projects Section (Grid Layout matching MiniBlog) */}
+        <section id="projects" className="py-20 px-6 md:px-8 max-w-6xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-text font-display">Featured Projects</h2>
+              <p className="text-text-muted mt-4">A showcase of my recent development work</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {projectsData.map((project, i) => (
+                <motion.div 
+                  key={i} 
+                  className="bg-surface rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:-translate-y-2 hover:shadow-lg transition-all duration-300"
+                  whileHover={{ y: -10 }}
+                >
+                  <div className="relative h-[220px] overflow-hidden">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110" style={{ backgroundImage: `url('${project.image}')` }}></div>
+                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
+                      {project.category}
+                    </span>
+                  </div>
+                  
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex justify-between items-center text-xs font-semibold text-text-muted mb-3">
+                      <span>Featured</span>
+                      <span>★</span>
+                    </div>
                     
-                    <h3 className="text-2xl md:text-3xl font-semibold font-display text-white mb-4 relative z-10">{project.title}</h3>
-                    <p className="text-gray-400 text-sm md:text-base mb-8 font-light flex-grow leading-relaxed relative z-10">
+                    <h3 className="text-xl font-bold text-text mb-3 leading-tight">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-text-muted text-sm mb-6 line-clamp-3">
                       {project.desc}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mb-8 relative z-10">
-                      {project.tech.map((t, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10 min-h-[64px]">
+                    <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                       <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedProjectDetails(i);
-                        }}
-                        className="flex items-center gap-2 text-sm text-white font-medium hover:text-gray-300 transition-colors bg-white/10 px-4 py-2 rounded-full"
+                        onClick={() => setSelectedProjectDetails(i)}
+                        className="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center gap-1"
                       >
-                        View More <ArrowRight size={16} />
+                        Learn more <ArrowRight size={16} />
                       </button>
                       
                       {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors ml-auto" onClick={(e) => e.stopPropagation()}>
-                          View Live <ExternalLink size={16} />
+                        <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors">
+                          <ExternalLink size={18} />
                         </a>
                       )}
                     </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
-        {/* Certifications & Achievements */}
-        <section id="certifications" className="py-24 px-6 md:px-8 bg-[#0a0a0a]">
-          <div className="max-w-4xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-              <div className="flex items-center gap-4 mb-16 justify-center">
-                <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs font-mono tracking-widest uppercase rounded-full border border-white/10">&lt;achievements/&gt;</span>
-                <h2 className="text-2xl md:text-4xl font-bold text-white font-display tracking-tight text-center">
-                  Certifications & Achievements
-                </h2>
+        {/* Footer */}
+        <footer className="bg-[#1a1a1a] text-white/60 py-16 mt-20">
+          <div className="max-w-6xl mx-auto px-6 md:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-12 mb-8">
+              <div className="mb-8 md:mb-0 text-center md:text-left">
+                <h3 className="text-2xl font-bold text-white mb-2">StephyAnn<span className="text-primary">.</span></h3>
+                <p>Computer Science Engineer & Developer</p>
               </div>
-              
-              <div className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 md:p-12">
-                <ul className="space-y-6 text-gray-400 font-light text-sm md:text-base">
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">NPTEL Online Certification</strong>
-                      Database Management System (IIT Kharagpur)
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">Oracle Java Foundation Learner's Certification</strong>
-                      Oracle Academy
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">Web Developer Bootcamp 2025</strong>
-                      Udemy
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">Complete Front-End Development Journey</strong>
-                      (HTML5, CSS3, JavaScript) - Infosys Springboard
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">AI Fundamentals</strong>
-                      IBM
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">Google Cloud GenAI Certifications</strong>
-                      (Vertex AI, LLMs, MLOps, Responsible AI, Transformers)
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">Introduction to Agile Development and Scrum</strong>
-                      IBM
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4 hover:text-white transition-colors group">
-                    <span className="text-gray-600 mt-1 group-hover:text-white transition-colors">›</span>
-                    <div>
-                      <strong className="text-white block mb-0.5">DevOps on AWS and Project Management</strong>
-                      AWS
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Footer / Contact */}
-        <footer id="contact" className="py-24 px-6 md:px-8 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-display font-medium text-white mb-6 tracking-tight">Let's Connect</h2>
-            <p className="text-gray-400 mb-10 text-lg font-light">
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-            </p>
-            <a href="mailto:stephyannbiju29@gmail.com" className="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-black bg-white hover:bg-gray-200 rounded-md transition-colors">
-              Say Hello <Mail className="ml-2" size={16} />
-            </a>
-            
-            <div className="mt-24 flex items-center justify-between border-t border-white/10 pt-8 flex-col md:flex-row gap-4">
-              <p className="text-sm text-gray-500 font-light">
-                &copy; {new Date().getFullYear()} Stephy Ann Biju.
-              </p>
               <div className="flex gap-6">
-                <a href="https://github.com/Stephyaan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a12.8 12.8 0 0 0-7 0C6.2 1.2 5 1.6 5 1.6a5.5 5.5 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 9.2c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/stephyannbiju/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
+                <a href="https://github.com/Stephyaan" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/stephyannbiju/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="mailto:stephyannbiju29@gmail.com" className="hover:text-white transition-colors">Email</a>
               </div>
+            </div>
+            <div className="text-center text-sm">
+              <p>&copy; 2026 Stephy Ann Biju. Crafted with ❤️ for modern development.</p>
             </div>
           </div>
         </footer>
       </main>
 
-      {/* Project Details Modal */}
+      {/* Project Details Modal (Light Theme) */}
       <AnimatePresence>
         {selectedProjectDetails !== null && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/40 backdrop-blur-md"
             onClick={() => setSelectedProjectDetails(null)}
           >
             <motion.div 
@@ -648,17 +376,17 @@ function App() {
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 20, opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="relative w-full max-w-4xl max-h-[90vh] bg-[#0f0f0f] border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl"
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl overflow-hidden flex flex-col shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/5">
-                <h2 className="text-2xl md:text-4xl font-bold text-white font-display tracking-tight">
+              <div className="flex items-center justify-between p-6 md:p-8 border-b border-gray-100">
+                <h2 className="text-2xl md:text-3xl font-bold text-text font-display tracking-tight">
                   {projectsData[selectedProjectDetails].title}
                 </h2>
                 <button 
                   onClick={() => setSelectedProjectDetails(null)}
-                  className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-gray-400 hover:text-white transition-colors"
+                  className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 hover:text-text transition-colors"
                 >
                   <X size={24} />
                 </button>
@@ -669,8 +397,8 @@ function App() {
                 <div className="space-y-8">
                   {/* Overview */}
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Info className="text-gray-500" size={20} /> Overview</h3>
-                    <p className="text-gray-300 leading-relaxed text-lg font-light">
+                    <h3 className="text-lg font-bold text-text mb-3 flex items-center gap-2"><Info className="text-primary" size={20} /> Overview</h3>
+                    <p className="text-text-muted leading-relaxed text-[1.05rem]">
                       {projectsData[selectedProjectDetails].fullDescription || projectsData[selectedProjectDetails].desc}
                     </p>
                   </div>
@@ -678,11 +406,11 @@ function App() {
                   {/* Features */}
                   {projectsData[selectedProjectDetails].features && (
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Layers className="text-gray-500" size={20} /> Key Features</h3>
+                      <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2"><Layers className="text-primary" size={20} /> Key Features</h3>
                       <ul className="space-y-3">
                         {projectsData[selectedProjectDetails].features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-gray-300">
-                            <span className="text-gray-600 mt-1">›</span>
+                          <li key={idx} className="flex items-start gap-3 text-text-muted">
+                            <span className="text-primary font-bold mt-0.5">›</span>
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -693,10 +421,10 @@ function App() {
                   {/* Concepts Learned */}
                   {projectsData[selectedProjectDetails].concepts && (
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2"><Sparkles className="text-gray-500" size={20} /> Concepts & Learnings</h3>
+                      <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2"><Sparkles className="text-primary" size={20} /> Concepts & Learnings</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {projectsData[selectedProjectDetails].concepts.map((concept, idx) => (
-                          <div key={idx} className="p-4 bg-white/5 rounded-xl border border-white/5 text-gray-300 text-sm">
+                          <div key={idx} className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-text-muted text-sm font-medium">
                             {concept}
                           </div>
                         ))}
@@ -707,23 +435,23 @@ function App() {
               </div>
 
               {/* Footer Actions */}
-              <div className="p-6 md:p-8 border-t border-white/5 bg-[#0a0a0a] flex items-center justify-between gap-4 flex-wrap">
+              <div className="p-6 md:p-8 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex flex-wrap gap-2">
                   {projectsData[selectedProjectDetails].tech.map((t, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full">
+                    <span key={idx} className="px-3 py-1 bg-white border border-gray-200 text-text-muted text-xs font-bold rounded-full shadow-sm">
                       {t}
                     </span>
                   ))}
                 </div>
                 <div className="flex items-center gap-4 ml-auto">
                   {projectsData[selectedProjectDetails].repo && (
-                    <a href={projectsData[selectedProjectDetails].repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-colors text-sm font-medium border border-white/10">
-                      <Code size={16} /> Repository
+                    <a href={projectsData[selectedProjectDetails].repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-white hover:bg-gray-100 text-text font-bold rounded-full transition-colors text-sm border border-gray-200 shadow-sm">
+                      <Code size={16} /> GitHub
                     </a>
                   )}
                   {projectsData[selectedProjectDetails].live && (
-                    <a href={projectsData[selectedProjectDetails].live} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-white text-black hover:bg-gray-200 rounded-full transition-colors text-sm font-medium">
-                      View Live <ExternalLink size={16} />
+                    <a href={projectsData[selectedProjectDetails].live} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-full transition-colors text-sm shadow-md">
+                      Live Preview <ExternalLink size={16} />
                     </a>
                   )}
                 </div>

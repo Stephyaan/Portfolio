@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --bg: #030712; /* gray-950 */
-    --fg: #f9fafb; /* gray-50 */
+    --bg: #f8f9fa;
+    --fg: #2D3436;
   }
 
   body {
-    @apply bg-[#030712] text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-primary-500/30 selection:text-primary-200;
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden selection:bg-primary/20 selection:text-primary-dark;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -18,31 +18,42 @@
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-purple-400 to-primary-600;
-  }
-  
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-white/80 backdrop-blur-md border border-gray-100 shadow-sm;
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar for Light Theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712; 
+  background: #f8f9fa; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2937; 
+  background: #cbd5e1; 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151; 
+  background: #94a3b8; 
 }
 
-/* Hide scrollbar for horizontal carousel */
+/* Custom scrollbar class for the modal */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Hide scrollbar for horizontal carousel if needed */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
