@@ -190,7 +190,7 @@ function App() {
             StephyAnn<span className="text-primary">.</span>
           </a>
           <div className="hidden md:flex gap-8 text-[0.95rem] font-semibold text-text-muted z-10">
-            {['About', 'Experience', 'Projects'].map((item) => (
+            {['About', 'Experience', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-primary hover:-translate-y-0.5 transition-all">
                 {item}
               </a>
@@ -467,7 +467,7 @@ function App() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-[#1a1a1a] text-white/60 py-16 mt-20">
+        <footer id="contact" className="bg-[#1a1a1a] text-white/60 py-16 mt-20">
           <div className="max-w-6xl mx-auto px-6 md:px-8">
             <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-12 mb-8">
               <div className="mb-8 md:mb-0 text-center md:text-left">
