@@ -231,56 +231,180 @@ function App() {
           </div>
         </section>
 
+        {/* About, Education & Skills */}
+        <section id="about" className="py-20 px-6 md:px-8 bg-background relative overflow-hidden">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+              <div className="flex items-center gap-4 mb-12">
+                <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-mono tracking-widest uppercase rounded-full border border-primary/20">&lt;about/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-text font-display tracking-tight">
+                  Who I Am
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* About Text */}
+                <div className="lg:col-span-2 space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-display text-text leading-tight">
+                    Motivated Computer Science Engineering student passionate about <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic font-serif">meaningful</span> digital solutions.
+                  </h3>
+                  <div className="text-text-muted space-y-4 font-light leading-relaxed text-lg">
+                    <p>
+                      Motivated and detail oriented Computer Science Engineering student with a strong foundation in programming, data analysis and software development. 
+                    </p>
+                    <p>
+                      Hands-on experience through internships and funded projects in Artificial Intelligence, UI/UX design and web development. Passionate about building practical, user-centric solutions and continuously enhancing technical and problem-solving skills to contribute effectively in real-world software projects.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quick Info Cards */}
+                <div className="flex flex-col gap-4">
+                  <div className="p-6 bg-surface border border-gray-100 shadow-sm rounded-2xl hover:shadow-md transition-shadow">
+                    <p className="text-xs text-primary font-bold uppercase tracking-widest mb-1">B.Tech</p>
+                    <h4 className="text-text font-bold text-sm">Computer Science Engineering</h4>
+                    <p className="text-xs text-text-muted mt-1">Amal Jyothi College of Engineering</p>
+                    <p className="text-[10px] text-gray-400 mt-2 font-mono">2023 - 2027 | CGPA: 8.63</p>
+                  </div>
+                  
+                  <div className="p-6 bg-surface border border-gray-100 shadow-sm rounded-2xl hover:shadow-md transition-shadow">
+                    <p className="text-xs text-secondary font-bold uppercase tracking-widest mb-1">Higher Secondary</p>
+                    <h4 className="text-text font-bold text-sm">Science</h4>
+                    <p className="text-xs text-text-muted mt-1">St. Antony's Public School</p>
+                    <p className="text-[10px] text-gray-400 mt-2 font-mono">CBSE | 2023 | 89%</p>
+                  </div>
+                  
+                  <div className="p-6 bg-surface border border-gray-100 shadow-sm rounded-2xl hover:shadow-md transition-shadow">
+                    <p className="text-xs text-accent font-bold text-yellow-700 uppercase tracking-widest mb-1">Secondary Education</p>
+                    <h4 className="text-text font-bold text-sm">CBSE</h4>
+                    <p className="text-xs text-text-muted mt-1">St. Antony's Public School</p>
+                    <p className="text-[10px] text-gray-400 mt-2 font-mono">2021 | 95%</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Skills & Tools Section */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp} className="mt-24">
+              <div className="flex items-center gap-4 mb-12">
+                <span className="px-3 py-1 bg-secondary/10 text-secondary text-xs font-mono tracking-widest uppercase rounded-full border border-secondary/20">&lt;skills/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-text font-display tracking-tight">
+                  Tech Stack & Tools
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Languages */}
+                <div className="p-8 bg-surface border border-gray-100 shadow-sm rounded-2xl">
+                  <h3 className="text-xl font-bold text-text mb-6 flex items-center gap-3"><Code size={20} className="text-primary"/> Programming & Frontend</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['Python', 'C', 'JavaScript', 'HTML5', 'CSS3', 'React (Basic)', 'Responsive Design'].map(skill => (
+                      <span key={skill} className="px-3 py-1.5 bg-gray-50 border border-gray-200 text-text-muted text-sm rounded-md hover:bg-gray-100 transition-colors cursor-default">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Cloud & Data */}
+                <div className="p-8 bg-surface border border-gray-100 shadow-sm rounded-2xl">
+                  <h3 className="text-xl font-bold text-text mb-6 flex items-center gap-3"><Database size={20} className="text-secondary"/> Cloud, Data & Tools</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['AWS', 'Docker', 'SQL', 'Power BI', 'Git/GitHub', 'Figma', 'VS Code'].map(skill => (
+                      <span key={skill} className="px-3 py-1.5 bg-gray-50 border border-gray-200 text-text-muted text-sm rounded-md hover:bg-gray-100 transition-colors cursor-default">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Professional Traits */}
+                <div className="md:col-span-2 p-6 bg-gradient-to-r from-gray-50 to-white border border-gray-100 shadow-sm rounded-2xl flex flex-col md:flex-row items-center gap-6">
+                  <h3 className="text-lg font-bold text-text whitespace-nowrap">Professional Traits:</h3>
+                  <div className="flex flex-wrap gap-4 text-sm text-text-muted font-medium">
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white shadow-sm rounded-full border border-gray-100"><Sparkles size={14} className="text-green-500"/> Continuous Learner</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white shadow-sm rounded-full border border-gray-100"><Sparkles size={14} className="text-blue-500"/> Proactive Problem Solver</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white shadow-sm rounded-full border border-gray-100"><Sparkles size={14} className="text-yellow-500"/> Agile & Adaptable</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white shadow-sm rounded-full border border-gray-100"><Sparkles size={14} className="text-purple-500"/> Cross-functional Collaboration</span>
+                    <span className="flex items-center gap-1.5 px-3 py-1 bg-white shadow-sm rounded-full border border-gray-100"><Sparkles size={14} className="text-pink-500"/> Enthusiastic Work Ethic</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Experience Section */}
-        <section id="experience" className="py-20 px-6 md:px-8 max-w-6xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-text font-display">Experience</h2>
-              <p className="text-text-muted mt-4">My professional journey and academic background</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Experience 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-text">DevOps & Cloud Intern</h3>
-                  <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">Feb 2026</span>
-                </div>
-                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">Nest Digital</h4>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Deployed full-stack and static web applications using AWS and GitHub Pages.</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Applied Git workflows for efficient version control.</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-1">›</span> Utilized Docker for containerization and gained hands-on cloud deployment experience.</li>
-                </ul>
+        <section id="experience" className="py-20 px-6 md:px-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+              <div className="flex items-center gap-4 mb-16 justify-center">
+                <span className="px-3 py-1 bg-primary/10 text-primary font-bold text-xs font-mono tracking-widest uppercase rounded-full border border-primary/20">&lt;experience/&gt;</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-text font-display tracking-tight">
+                  Official Record
+                </h2>
               </div>
+              
+              <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-sm">
+                {/* Decorative top border like a receipt */}
+                <div className="absolute top-0 left-0 right-0 h-2 flex justify-between px-2 overflow-hidden opacity-30">
+                  {Array.from({ length: 40 }).map((_, i) => (
+                    <div key={i} className="w-2 h-2 rounded-full bg-gray-300 -mt-1"></div>
+                  ))}
+                </div>
 
-              {/* Experience 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-text">AI & Data Analytics Intern</h3>
-                  <span className="text-xs font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">Jul 2025</span>
-                </div>
-                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">IPSR Solutions Ltd</h4>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-2"><span className="text-secondary mt-1">›</span> Worked on Generative AI concepts, Machine Learning models, and RAG-based chatbots.</li>
-                  <li className="flex items-start gap-2"><span className="text-secondary mt-1">›</span> Applied Python and Power BI for data analysis and visualization tasks.</li>
-                </ul>
-              </div>
+                <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[1.125rem] before:-translate-x-px before:h-full before:w-px before:bg-gray-200 mt-4">
+                  
+                  {/* Experience 1: Nest Digital */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-white rounded-full border-2 border-gray-300 group-hover:border-primary transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-primary transition-colors"></div>
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-bold text-text">DevOps & Cloud Intern</h3>
+                      <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">February 2026</span>
+                    </div>
+                    <h4 className="text-sm font-semibold text-text-muted mb-4 tracking-wide uppercase">Nest Digital</h4>
+                    <div className="p-5 bg-gray-50 border border-gray-100 rounded-xl font-mono text-sm text-text-muted leading-relaxed group-hover:bg-gray-100 transition-colors shadow-sm">
+                      <p className="mb-2"><span className="text-primary mr-2 font-bold">›</span>Deployed full-stack and static web applications using AWS and GitHub Pages.</p>
+                      <p className="mb-2"><span className="text-primary mr-2 font-bold">›</span>Applied Git workflows (branching, commits, push/pull) for efficient version control.</p>
+                      <p><span className="text-primary mr-2 font-bold">›</span>Utilized Docker for containerization and gained hands-on experience in cloud deployment practices.</p>
+                    </div>
+                  </div>
 
-              {/* Experience 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-text">UI/UX Design Intern</h3>
-                  <span className="text-xs font-bold text-accent bg-accent/20 px-3 py-1 rounded-full text-yellow-800">Apr 2025</span>
+                  {/* Experience 2: IPSR */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-white rounded-full border-2 border-gray-300 group-hover:border-secondary transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-secondary transition-colors"></div>
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-bold text-text">AI & Data Analytics Intern</h3>
+                      <span className="text-xs font-bold text-secondary uppercase tracking-widest bg-secondary/10 px-3 py-1 rounded-full">July 2025 (1 Month)</span>
+                    </div>
+                    <h4 className="text-sm font-semibold text-text-muted mb-4 tracking-wide uppercase">IPSR Solutions Ltd</h4>
+                    <div className="p-5 bg-gray-50 border border-gray-100 rounded-xl font-mono text-sm text-text-muted leading-relaxed group-hover:bg-gray-100 transition-colors shadow-sm">
+                      <p className="mb-2"><span className="text-secondary mr-2 font-bold">›</span>Worked on Generative AI concepts, Machine Learning models, and RAG-based chatbot development.</p>
+                      <p className="mb-2"><span className="text-secondary mr-2 font-bold">›</span>Applied Python and Power BI for data analysis and visualization tasks.</p>
+                      <p><span className="text-secondary mr-2 font-bold">›</span>Gained practical exposure to real-world AI workflows and model integration.</p>
+                    </div>
+                  </div>
+
+                  {/* Experience 3: Cognifyz */}
+                  <div className="relative pl-14 group">
+                    <div className="absolute left-0 top-1 w-9 h-9 flex items-center justify-center bg-white rounded-full border-2 border-gray-300 group-hover:border-accent transition-colors">
+                      <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-accent transition-colors"></div>
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl font-display font-bold text-text">UI/UX Design Intern</h3>
+                      <span className="text-xs font-bold text-yellow-700 uppercase tracking-widest bg-accent/20 px-3 py-1 rounded-full">April 2025 (2 Months)</span>
+                    </div>
+                    <h4 className="text-sm font-semibold text-text-muted mb-4 tracking-wide uppercase">Cognifyz Technologies</h4>
+                    <div className="p-5 bg-gray-50 border border-gray-100 rounded-xl font-mono text-sm text-text-muted leading-relaxed group-hover:bg-gray-100 transition-colors shadow-sm">
+                      <p className="mb-2"><span className="text-accent mr-2 font-bold">›</span>Designed user interfaces with a focus on usability and user experience enhancement.</p>
+                      <p><span className="text-accent mr-2 font-bold">›</span>Created wireframes and improved design flow based on user-centric principles.</p>
+                    </div>
+                  </div>
+
                 </div>
-                <h4 className="text-sm font-semibold text-text-muted mb-4 uppercase tracking-wide">Cognifyz Technologies</h4>
-                <ul className="space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-1">›</span> Designed user interfaces with a focus on usability and user experience enhancement.</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-1">›</span> Created wireframes and improved design flow based on user-centric principles.</li>
-                </ul>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </section>
 
         {/* Projects Section (Grid Layout matching MiniBlog) */}
@@ -327,11 +451,18 @@ function App() {
                         Learn more <ArrowRight size={16} />
                       </button>
                       
-                      {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors">
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
+                      <div className="flex items-center gap-3">
+                        {project.repo && (
+                          <a href={project.repo} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors" title="GitHub Repository">
+                            <Code size={18} />
+                          </a>
+                        )}
+                        {project.live && (
+                          <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors" title="Live Preview">
+                            <ExternalLink size={18} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
