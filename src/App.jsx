@@ -412,31 +412,20 @@ function App() {
               <p className="text-text-muted mt-4">A showcase of my recent development work</p>
             </div>
           </motion.div>
-            
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true }} 
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          >
-            {projectsData.map((project, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeInUp}
-                animate={{ y: [0, -10, 0] }}
-                transition={{ 
-                  y: {
-                    repeat: Infinity, 
-                    duration: 4, 
-                    ease: "easeInOut",
-                    delay: i * 0.3 
-                  }
-                }}
-                className="bg-surface rounded-2xl overflow-hidden border border-gray-100 flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300 relative group cursor-pointer"
-                onClick={() => setSelectedProjectDetails(i)}
-              >
-                <div className="relative h-[220px] overflow-hidden">
+          <div className="relative overflow-hidden w-[100vw] ml-[50%] -translate-x-1/2 py-10">
+            <motion.div 
+              className="flex gap-8 md:gap-12 w-max px-8"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+            >
+              {[...projectsData, ...projectsData].map((project, i) => (
+                <motion.div 
+                  key={i} 
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="w-[320px] md:w-[420px] bg-surface rounded-2xl overflow-hidden border border-gray-100 flex flex-col shadow-sm hover:shadow-xl transition-all duration-300 relative group cursor-pointer flex-shrink-0"
+                  onClick={() => setSelectedProjectDetails(i % projectsData.length)}
+                >
+                  <div className="relative h-[220px] overflow-hidden">
                     <div className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110" style={{ backgroundImage: `url('${project.image}')` }}></div>
                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
                       {project.category}
@@ -459,7 +448,7 @@ function App() {
                     
                     <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                       <button 
-                        onClick={() => setSelectedProjectDetails(i)}
+                        onClick={() => setSelectedProjectDetails(i % projectsData.length)}
                         className="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center gap-1"
                       >
                         Learn more <ArrowRight size={16} />
@@ -467,7 +456,7 @@ function App() {
                       
                       <div className="flex items-center gap-3">
                         {project.live && (
-                          <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-text transition-colors" title="Live Preview">
+                          <a href={project.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-400 hover:text-text transition-colors" title="Live Preview">
                             <ExternalLink size={18} />
                           </a>
                         )}
@@ -476,7 +465,8 @@ function App() {
                   </div>
                 </motion.div>
               ))}
-          </motion.div>
+            </motion.div>
+          </div>
         </section>
 
         {/* Footer */}
