@@ -433,15 +433,32 @@ function App() {
               <h2 className="text-3xl md:text-5xl font-bold text-text font-display">Featured Projects</h2>
               <p className="text-text-muted mt-4">A showcase of my recent development work</p>
             </div>
+          </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {projectsData.map((project, i) => (
-                <motion.div 
-                  key={i} 
-                  className="bg-surface rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:-translate-y-2 hover:shadow-lg transition-all duration-300"
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="relative h-[220px] overflow-hidden">
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {projectsData.map((project, i) => (
+              <motion.div 
+                key={i} 
+                variants={fadeInUp}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ 
+                  y: {
+                    repeat: Infinity, 
+                    duration: 4, 
+                    ease: "easeInOut",
+                    delay: i * 0.3 
+                  }
+                }}
+                className="bg-surface rounded-2xl overflow-hidden border border-gray-100 flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300 relative group cursor-pointer"
+                onClick={() => setSelectedProjectDetails(i)}
+              >
+                <div className="relative h-[220px] overflow-hidden">
                     <div className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110" style={{ backgroundImage: `url('${project.image}')` }}></div>
                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
                       {project.category}
@@ -481,7 +498,6 @@ function App() {
                   </div>
                 </motion.div>
               ))}
-            </div>
           </motion.div>
         </section>
 
