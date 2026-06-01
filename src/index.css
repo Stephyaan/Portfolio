@@ -1,63 +1,53 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Raleway:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-darkBlue: #1a1d23;
+  --color-headline: #1a1d23;
+  --color-body: #3d4459;
+  --color-muted: #6b7390;
+  --color-primary: #02aab0;
+  --color-secondary: #00cdac;
+  --color-bg-pure: #ffffff;
+  --color-bg-snow: #f8f9fb;
+  --color-bg-mist: #eef0f4;
+  --color-border-silver: #e2e5ec;
+  --color-accent-wash: #f0fafa;
+  --color-accent-text: #02aab0;
+  --font-sans: 'Raleway', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+}
 
 @layer base {
-  :root {
-    --bg: #f8f9fa;
-    --fg: #2D3436;
-  }
-
   body {
-    @apply bg-background text-text font-sans antialiased overflow-x-hidden selection:bg-primary/20 selection:text-primary-dark;
+    @apply font-sans bg-bg-pure text-body leading-relaxed;
+    overflow-x: hidden;
   }
-
+  
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-heading text-headline font-bold;
   }
 }
 
-@layer utilities {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-gray-100 shadow-sm;
+@layer components {
+  .section-title {
+    @apply text-[2.5rem] uppercase text-headline mb-12 text-center relative font-heading;
   }
-}
-
-/* Custom Scrollbar for Light Theme */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #f8f9fa; 
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1; 
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8; 
-}
-
-/* Custom scrollbar class for the modal */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
-  border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
-}
-
-/* Hide scrollbar for horizontal carousel if needed */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  
+  .cta-btn {
+    @apply inline-block px-6 py-2 border-2 text-base font-bold transition-all duration-300 font-sans;
+  }
+  
+  .cta-btn--hero {
+    @apply text-accent-text border-accent-text hover:bg-accent-text hover:text-white;
+  }
+  
+  .cta-btn--resume {
+    @apply text-white bg-gradient-to-r from-primary to-secondary border-none hover:opacity-90;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .text-color-main {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
 }
