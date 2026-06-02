@@ -10,7 +10,7 @@ const projectsData = [
     image: "https://placehold.co/800x600/6C63FF/FFF?text=HostelHub",
     desc: "HostelHub is a comprehensive full-stack solution designed to digitize and streamline the maintenance operations within university hostels. It features Role-Based Access Control (RBAC), real-time status tracking, and an interactive analytics dashboard.",
     repo: "https://github.com/Stephyaan/HostelHub-Hostel-Maintenance-and-Utility-WebApp",
-    live: "https://hostel-management-ecosystem-stephyaans-projects.vercel.app/"
+    live: "https://hostel-hub-ochre-ten.vercel.app/"
   },
   {
     title: "Personal Blog Website",
